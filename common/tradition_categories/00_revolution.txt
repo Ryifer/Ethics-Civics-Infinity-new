@@ -3,10 +3,10 @@ tradition_revolution = {
 	adoption_bonus = "tr_revolution_adopt"
 	finish_bonus = "tr_revolution_finish"
 	traditions = {
-		"tr_revolution_peoples_of_fleet"
-		"tr_revolution_power_of_freedom"
-		"tr_revolution_revolutionary_spirit"
 		"tr_revolution_army_of_democracy"
+		"tr_revolution_army_of_freedom"
+		"tr_revolution_revolutionary_spirit"
+		"tr_revolution_army_of_peoples"
 		"tr_revolution_revolutionary_propaganda"
 	}
 
@@ -15,12 +15,21 @@ tradition_revolution = {
 			is_regular_empire = yes
 			has_valid_civic = civic_machine_liberator
 		}
-		is_xenophobe = no
+		is_democratic_country = yes
 		NOT = { has_tradition = tr_supremacy_adopt }
 	}
 
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 10
+			is_true_scientific_socialism = yes
+			is_characteristic_socialism = no
+		}
+		modifier = {
+			factor = 10
+			has_valid_civic = civic_machine_liberator
+		}
 		modifier = {
 			factor = 0.1
 			has_ascension_perk = ap_become_the_crisis
@@ -35,7 +44,7 @@ tradition_revolution = {
 		}
 		modifier = {
 			factor = 0.01
-			is_capitalism = yes
+			is_authoritarian = yes
 		}
 		modifier = {
 			factor = 0.1

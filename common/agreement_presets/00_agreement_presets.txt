@@ -23,12 +23,15 @@
 #			}
 #		}
 # 	}
+#	hidden = no 								# This preset will be hidden from UI but the AI will be able to use it.
+#	should_ai_use_for_proposals = yes			# The ai will skip this when trying to find best/preffered agreement preset to negotiate existing or propose new agreement.
 # }
 
 @protectorate_tech_threshold = 0.4
 @protectorate_tech_switch = 0.5
 
-@specialist_base_acceptance_value = 100
+@specialist_base_acceptance_value = 50
+@specialist_subject_base_acceptance_value = 50
 @specialist_aligned_ethics_value = 50
 @specialist_unaligned_ethics_value = -50
 
@@ -68,6 +71,10 @@ preset_vassal = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -75,25 +82,21 @@ preset_vassal = {
 		base = 100
 	}
 	subject_weight = {
-		base = 100
+		base = 25
 	}
 
 	potential = {
 		from = {
 			NOR = {
-				has_authority = auth_corporate
+				is_megacorp = yes
 				is_country_type = awakened_fallen_empire
 				has_civic = civic_inwards_perfection
 			}
 		}
 		NOT = { has_civic = civic_inwards_perfection }
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			from = { has_origin = origin_imperial_vassal_overlord }
+			from = { has_origin = origin_red_satellite_overlord }
 			tech_unlocked_ratio = {
 				who = from
 				ratio >= @protectorate_tech_threshold
@@ -138,6 +141,10 @@ preset_subsidiary = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 		resource_terms = {
 			{
@@ -152,11 +159,11 @@ preset_subsidiary = {
 	}
 
 	subject_weight = {
-		base = 90
+		base = 50
 	}
 
 	potential = {
-		from = { has_authority = auth_corporate }
+		from = { is_megacorp = yes }
 		tech_unlocked_ratio = {
 			who = from
 			ratio >= @protectorate_tech_threshold
@@ -200,6 +207,10 @@ preset_tributary = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 		resource_terms = {
 			{
@@ -213,13 +224,13 @@ preset_tributary = {
 		base = 90
 	}
 	subject_weight = {
-		base = 80
+		base = 50
 	}
 
 	potential = {
 		from = {
 			NOR = {
-				has_authority = auth_corporate
+				is_megacorp = yes
 				is_country_type = awakened_fallen_empire
 			}
 		}
@@ -272,6 +283,10 @@ preset_bulwark = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -297,7 +312,7 @@ preset_bulwark = {
 	}
 
 	subject_weight = {
-		base =  @specialist_base_acceptance_value
+		base =  25
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_militarist = yes
@@ -315,18 +330,15 @@ preset_bulwark = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = bulwark }
 			has_country_flag = specialistion_subject_conversion_flag
 			tech_unlocked_ratio = {
 				who = from
 				ratio >= @protectorate_tech_threshold
 			}
+			has_origin = origin_enlightened
 		}
 	}
 }
@@ -367,6 +379,10 @@ preset_scholarium = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -388,7 +404,7 @@ preset_scholarium = {
 	}
 
 	subject_weight = {
-		base =  @specialist_base_acceptance_value
+		base =  @specialist_subject_base_acceptance_value
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -406,18 +422,15 @@ preset_scholarium = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			has_country_flag = specialistion_subject_conversion_flag
 			tech_unlocked_ratio = {
 				who = from
 				ratio >= @protectorate_tech_threshold
 			}
+			has_origin = origin_enlightened
 		}
 	}
 }
@@ -464,6 +477,10 @@ preset_prospectorium = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -485,7 +502,7 @@ preset_prospectorium = {
 	}
 
 	subject_weight = {
-		base =  @specialist_base_acceptance_value
+		base =  @specialist_subject_base_acceptance_value
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_pacifist = yes
@@ -503,18 +520,15 @@ preset_prospectorium = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = prospectorium }
 			has_country_flag = specialistion_subject_conversion_flag
 			tech_unlocked_ratio = {
 				who = from
 				ratio >= @protectorate_tech_threshold
 			}
+			has_origin = origin_enlightened
 		}
 	}
 }
@@ -525,6 +539,7 @@ preset_release_sector = {
 		forced_initial_loyalty = 50
 	}
 	hidden = yes
+	should_ai_use_for_proposals = no
 }
 
 ##############
@@ -568,8 +583,9 @@ preset_protectorate = {
 
 	potential = {
 		from = {
-			NOT = {
+			NOR = {
 				has_origin = origin_imperial_vassal_overlord
+				has_origin = origin_red_satellite_overlord
 			}
 			is_country_type = default
 		}
@@ -585,7 +601,7 @@ preset_protectorate = {
 		base = 200
 	}
 	subject_weight = {
-		base = 80
+		base = 50
 	}
 }
 
@@ -637,10 +653,16 @@ preset_scion = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 	potential = {
-		has_origin = origin_scion
+		any_agreement = {
+			agreement_preset = preset_scion
+		}
 		from = {
 			OR = {
 				is_country_type = fallen_empire
@@ -684,6 +706,10 @@ preset_dominion = {
 			{
 				key = subject_loyalty
 				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
 			}
 		}
 		resource_terms = {
@@ -733,6 +759,10 @@ preset_satellite = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 		resource_terms = {
 			{
@@ -781,6 +811,10 @@ preset_signatory = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 	potential = {
@@ -823,6 +857,10 @@ preset_thrall = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 		resource_terms = {
 			{
@@ -835,6 +873,104 @@ preset_thrall = {
 		from = {
 			is_country_type = awakened_fallen_empire
 			has_ethic = ethic_fanatic_xenophobe
+		}
+	}
+}
+
+preset_political_client = {
+	icon = "GFX_diplomacy_status_is_political_client"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_not_do_diplomacy
+			}
+			{
+				key = subject_expand
+				value = subject_cannot_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_none
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_none
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = 0.3
+			}
+		}
+	}
+	potential = {
+		from = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = fallen_empire_hive_control
+		}
+	}
+}
+
+preset_herald = {
+	icon = "GFX_diplomacy_status_is_herald"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy
+			}
+			{
+				key = subject_expand
+				value = subject_cannot_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+	potential = {
+		from = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = fallen_empire_hive_war
 		}
 	}
 }
@@ -875,6 +1011,10 @@ preset_satrapy = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 		resource_terms = {
 			{
@@ -884,7 +1024,9 @@ preset_satrapy = {
 		}
 	}
 	potential = {
-		from = { is_country_type = awakened_marauders }
+		from = {
+			is_country_type = awakened_marauders
+		}
 	}
 }
 

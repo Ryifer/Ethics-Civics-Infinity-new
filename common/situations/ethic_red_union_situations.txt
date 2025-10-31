@@ -47,7 +47,7 @@ situation_road_to_dissolution = {
 				planet_amenities_reduction = 0.1
 				planet_pops_upkeep_mult = 0.2
 			}
-			end = 750
+			end = 1500
 		}
 		revolt_severity_2 = {
 			icon = GFX_situation_stage_2
@@ -66,7 +66,7 @@ situation_road_to_dissolution = {
 				planet_amenities_reduction = 0.2
 				planet_pops_upkeep_mult = 0.4
 			}
-			end = 1800
+			end = 3000
 		}
 		revolt_severity_3 = {
 			icon = GFX_situation_stage_3
@@ -79,7 +79,7 @@ situation_road_to_dissolution = {
 						country_event = {
 							id = red_origin.1989
 						}
-						generate_rebel_situ = { ETHIC = capitalism }
+						#generate_rebel_situ = { ETHIC = capitalism }
 					}
 				}
 			}
@@ -92,7 +92,7 @@ situation_road_to_dissolution = {
 				planet_pops_upkeep_mult = 0.8
 				country_subject_acceptance_add = -1000
 			}
-			end = 3000
+			end = 4500
 		}
 		revolt_severity_4 = {
 			icon = GFX_situation_stage_4
@@ -113,6 +113,7 @@ situation_road_to_dissolution = {
 									has_country_flag = human_1
 									OR = {
 										has_valid_civic = civic_shared_burden
+										has_valid_civic = civic_advanced_socialism
 										has_valid_civic = civic_socialistic
 									}
 								}
@@ -133,7 +134,7 @@ situation_road_to_dissolution = {
 				planet_pops_upkeep_mult = 1.5
 				country_subject_acceptance_add = -1000
 			}
-			end = 4500
+			end = 6000
 		}
 	}
 
@@ -266,7 +267,9 @@ situation_road_to_dissolution = {
 				limit = {
 					is_colony = yes
 					planet_stability < 50
-					num_pops > 5
+					count_owned_pop_amount = {
+						count > 500
+					}
 				}
 			}
 			desc = STRING_UNREST_PLANETS_IN_COUNTRY
@@ -280,7 +283,9 @@ situation_road_to_dissolution = {
 				limit = {
 					is_colony = yes
 					planet_stability < @stabilitylevel2
-					num_pops > 5
+					count_owned_pop_amount = {
+						count > 500
+					}
 				}
 			}
 			desc = STRING_REBELLIOUS_PLANETS_IN_COUNTRY
@@ -288,7 +293,7 @@ situation_road_to_dissolution = {
 			mult = 2
 		}
 		complex_trigger_modifier = {
-			trigger = count_owned_pop
+			trigger = count_owned_pop_amount
 			trigger_scope = owner
 			parameters = {
 				limit = {
@@ -298,10 +303,10 @@ situation_road_to_dissolution = {
 			}
 			desc = STRING_UNEMPLOYMENT
 			mode = add
-			mult = 0.1
+			mult = 0.001
 		}
 		complex_trigger_modifier = {
-			trigger = count_owned_pop
+			trigger = count_owned_pop_amount
 			trigger_scope = owner
 			parameters = {
 				limit = {
@@ -311,10 +316,10 @@ situation_road_to_dissolution = {
 			}
 			desc = STRING_ANGRY_POPS
 			mode = add
-			mult = 0.1
+			mult = 0.001
 		}
 		complex_trigger_modifier = {
-			trigger = count_owned_pop
+			trigger = count_owned_pop_amount
 			trigger_scope = owner
 			parameters = {
 				limit = {
@@ -325,10 +330,10 @@ situation_road_to_dissolution = {
 			}
 			desc = STRING_UNHAPPY_POPS
 			mode = add
-			mult = 0.05
+			mult = 0.0005
 		}
 		complex_trigger_modifier = {
-			trigger = count_owned_pop
+			trigger = count_owned_pop_amount
 			trigger_scope = owner
 			parameters = {
 				limit = {
@@ -339,10 +344,10 @@ situation_road_to_dissolution = {
 			}
 			desc = STRING_FAIR_POPS
 			mode = add
-			mult = 0.02
+			mult = 0.0002
 		}
 		complex_trigger_modifier = {
-			trigger = count_owned_pop
+			trigger = count_owned_pop_amount
 			trigger_scope = owner
 			parameters = {
 				limit = {
@@ -354,7 +359,7 @@ situation_road_to_dissolution = {
 			}
 			desc = STRING_GOOD_POPS
 			mode = add
-			mult = 0.01
+			mult = 0.0001
 		}
 		complex_trigger_modifier = {
 			trigger = count_playable_country

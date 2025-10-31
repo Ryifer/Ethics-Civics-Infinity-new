@@ -109,8 +109,6 @@ situation_ethic_rebel = {
                     ethic_xenophile_rebel_set = { generate_rebel_final = { ETHIC = xenophile } }
                     ethic_authoritarian_rebel_set = { generate_rebel_final = { ETHIC = authoritarian } }
                     ethic_egalitarian_rebel_set = { generate_rebel_final = { ETHIC = egalitarian } }
-                    ethic_capitalism_rebel_set = { generate_rebel_final = { ETHIC = capitalism } }
-                    ethic_socialism_rebel_set = { generate_rebel_final = { ETHIC = socialism } }
                 }
             }
             destroy_situation = this
@@ -126,7 +124,7 @@ situation_ethic_rebel = {
         resources = {
             category = situations
             upkeep = {
-                influence = -3
+                influence = 3
             }
         }
         modifier = {
@@ -156,7 +154,7 @@ situation_ethic_rebel = {
         resources = {
             category = situations
             upkeep = {
-                influence = -2
+                influence = 2
             }
         }
         modifier = {
@@ -182,12 +180,6 @@ situation_ethic_rebel = {
         name = ethic_rebel_nothing
         icon = GFX_situation_approach_this_is_fine
         icon_background = GFX_situation_approach_bg_green
-        resources = {
-            category = situations
-            upkeep = {
-                influence = -1
-            }
-        }
         modifier = {
             country_unity_produces_mult = -0.5
         }
@@ -213,7 +205,7 @@ situation_ethic_rebel = {
         resources = {
             category = situations
             upkeep = {
-                influence = -2
+                influence = 2
             }
         }
         modifier = {

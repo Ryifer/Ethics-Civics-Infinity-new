@@ -1,11 +1,4 @@
 ﻿l_simp_chinese:
- # 机器人科技线
- tech_robotic_workers:0 "机器人劳工"
- tech_robotic_workers_desc:0 "此种机器人单位拥有识别自然语言的能力，能在简单的语音指令下准确地完成重体力劳动，是完美的廉价劳动力。"
- tech_droid_workers:0 "智能人"
- tech_droid_workers_desc:0 "升级版机器人劳工，复杂的模拟神经回路能够使其与自然智慧生物共情，并能承担诸如艺术创作之类的复杂工作。"
- tech_synthetic_workers:0 "合成人"
- tech_synthetic_workers_desc:0 "高级机器人，其内置的正电子脑能够完全模拟自然智慧生物的思维活动，并使其进一步的理解道德、法律等高级社会结构。"
 
  # 装甲科技线
  tech_ship_armor_1:0 "耐钢材料"
@@ -47,6 +40,16 @@
  SMALL_ARMOR_5:0 "小型零素装甲"
  MEDIUM_ARMOR_5:0 "中型零素装甲"
  LARGE_ARMOR_5:0 "大型零素装甲"
+ NANOCOMPOSITE_CARAPACE: "耐钢甲壳"
+ NANOCOMPOSITE_CARAPACE_DESC: "有机生长的耐钢版让这种生物可以抵御更多射弹伤害。"
+ CERAMO_CHITIN_CARAPACE: "瓷金几丁质甲壳"
+ CERAMO_CHITIN_CARAPACE_DESC: "对生物体的天然装甲用微观复合陶瓷进行补强可以提高生存率。"
+ PLASTEEL_CARAPACE: "纳米构造甲壳"
+ PLASTEEL_CARAPACE_DESC: "对生物的基因型进行小规模调整可以让矿物质养分在皮肤以上形成具有纳米构造的保护性甲壳。"
+ DURASTEEL_CARAPACE: "重子格栅甲壳"
+ DURASTEEL_CARAPACE_DESC: "$ARMOR_4_DESC$"
+ NEUTRONIUM_CARAPACE: "零素甲壳"
+ NEUTRONIUM_CARAPACE_DESC: "刺激生长零素装甲板需要将生物的基因组推至极限。这种卓越的坚固甲壳可以抵御能瞬间液化其他防御的伤害。"
  
 
 # 推进器科技线
@@ -104,6 +107,16 @@
  MASS_DRIVER_4_DESC:0 "更强劲的质量武器，内部装填的仿中子星炮弹在高亚光速条件下能够对敌人产生最大的损伤。"
  MASS_DRIVER_5:0 "引力弹弓"
  MASS_DRIVER_5_DESC:0 "将老式的电磁轨道升级为引力轨道后的产物，它能够发射得更准，速度更快。"
+ SHARD_ACCELERATOR: "生物线圈骨片炮"
+ SHARD_ACCELERATOR_DESC: "电神经通路的线圈增强了静电放电，让该生物可以以极快的速度发射磁化的骨头碎片。"
+ BIO_COIL_SHARD_ACCELERATOR: "骨片轨道炮"
+ BIO_COIL_SHARD_ACCELERATOR_DESC: "轨道状附肢将化学能转化为电能，产生强大的磁场以发射致命的碎骨片弹丸。"
+ SHARD_RAIL_ACCELERATOR: "反物质骨片轨道炮"
+ SHARD_RAIL_ACCELERATOR_DESC: "特殊的生物腺体可以合成反物质化的生物骨片，并通过轨道状附肢发射出体外。"
+ ADVANCED_SHARD_RAIL_ACCELERATOR: "生物中子团炮"
+ ADVANCED_SHARD_RAIL_ACCELERATOR_DESC: "更强劲的质量武器，经过改造的特殊器官能够在生物体内生成类中子星物质，并通过生物动力将其作为炮弹以高亚光速对目标喷射。"
+ SHARD_GAUSS_ACCELERATOR: "$MASS_DRIVER_5$"
+ SHARD_GAUSS_ACCELERATOR_DESC: "复杂的人工器官赋予了生物直接操纵引力的能力，短暂的空间曲率修正能让投掷物以超光速击穿敌人的防御。"
  
  
  SMALL_MASS_DRIVER_1:0 "小型电磁线圈炮"
@@ -280,6 +293,16 @@
  XRAY_LASER_DESC:0 "通过舰载武器发射反中子粒子束组成的高速射流，我们能够对任何物质结构造成最大程度的损伤。"
  GAMMA_LASER:0 "引力波调制器"
  GAMMA_LASER_DESC:0 "使用引力波模拟高能级天体产生的空间结构紊乱效应，撕碎敌方舰船的整体防御构架。"
+ RED_EYE_BEAM: "红眼光线"
+ RED_EYE_BEAM_DESC: "一种生物的晶状体被增强以发射高强度激光束。对基因型进行进一步改造可以触发多个眼球的同步发育。"
+ BLUE_EYE_BEAM: "蓝眼光线"
+ BLUE_EYE_BEAM_DESC: "通过对视网膜进行基因改良可以让眼部器官投射出更强大的高能激光束。"
+ UV_EYE_BEAM: "伽马眼光线"
+ UV_EYE_BEAM_DESC: "基因上优化到极致的视觉器官可以发射能量无与伦比的光束，拥有毁灭性的力量。"
+ XRAY_EYE_BEAM: "反粒子眼光线"
+ XRAY_EYE_BEAM_DESC: "对视神经系统的深度改造能够使眼部器官发射出正电子射流，对敌舰物质结构产生有效损伤。"
+ GAMMA_EYE_BEAM: "重力眼光线"
+ GAMMA_EYE_BEAM_DESC: "额外扩容的脑区能够通过异化视觉系统捕捉目标区域的引力薄弱点，并发射引力子射流进行针对性的破坏。"
  
  SMALL_RED_LASER:0 "小型激光发射器"
  MEDIUM_RED_LASER:0 "中型激光发射器"
@@ -384,6 +407,18 @@
  tech_archaeoshield_desc:0 "延留力场的投射距离远超普通护盾，它能在着弹瞬间利用远古技术改写空间曲率，给予护盾更长的时间窗口来消耗来袭攻击的能量。"
 
 
+ # 星界探索科技线
+ ## 傻逼蠢驴到底会不会写科幻
+ tech_astral_harvesting: "宇宙琴弦"
+ tech_astral_harvesting_desc: "时空裂隙的边缘上游离着大量因为物理法则混乱而坍缩的超弦，我们可以将之收集起来加以研究和利用。"
+
+
+ # 傻逼跳帮
+ ## 狗屎的外国人真的写不出来科学幻想了吗
+ BOARDING_CABLES: "侵入接口发射器"
+ tech_boarding_cables_desc: "用改装的小口径火炮发射的小型信号接收器，其附带的微型钻探无人机能够检测到船体内部的信号线缆或生物体内的神经导线并进行强行链接，从而让母舰能够远程入侵操控敌舰。"
+
+
  # 土著观察科技线
  ## 傻逼蠢驴
  tech_unusual_senses:1 "!反常点侦测"
@@ -425,6 +460,97 @@
 
  tech_temple_of_transportation:1 "!FTL时代交通枢纽"
  tech_temple_of_transportation_desc:1 "!我们观测的多个文明都拥有这样一个观点:交通运输网络加深了人们的联系，使得人们更加团结。尽管随着时代的发展，我们已经不再使用蒸汽引擎驱动的落后交通网络，但我们由超空间中继器组成的交通运输网络也能够实现类似的效果。"
+
+
+ # 突破性科技线
+ ## 他妈的傻逼蠢驴
+ tech_engineering_1:0 "纳米力学"
+ tech_engineering_1_desc:1 "机械工程的进一步突破要求我们下降到纳米尺度。我们现在能够以前所未有的方式操纵物质结构的系统。"
+ tech_engineering_2:0 "自连接电路"
+ tech_engineering_2_desc:1 "就像有机神经元通过轴突发芽重新建立失去的连接一样，这些电路也能够自我检修。现在，即使是最简单的计算系统也有望在使用过程中不断发展。"
+ tech_engineering_3:0 "超固体材料"
+ tech_engineering_3_desc:1 "这些材料的量子力学性质是叠加态的关键，这是材料科学和工业科学的革命性发展。"
+ tech_engineering_4:0 "超工程架构"
+ tech_engineering_4_desc:1 "通过对空间拓朴的深入运用，我们能够在微观层面和宏观层面同时构建出对三维宇宙而言坚不可摧的结构。"
+ tech_engineering_5:0 "超深空开发工程"
+ tech_engineering_5_desc:1 "随着银河被我们逐步开发，我们开始将目光投向河系之间的广袤深空。文明的未来决不仅仅局限于浩瀚宇宙的一角，而我们迈出了离开家门的第一步。"
+
+ tech_physics_1:0 "量子计算"
+ tech_physics_1_desc:1 "量子计算机的处理速度超过了经典极限，其潜力是无限的。这项革命性的技术预示着向解决问题的未知领域的巨大飞跃。"
+ tech_physics_2:0 "统一场论"
+ tech_physics_2_desc:1 "宇宙的基本力可以通过物理场来调节。掌握这个过程可以让我们扮演上帝——至少在科学实验室的范围内是这样。"
+ tech_physics_3:0 "量子引力波"
+ tech_physics_3_desc:1 "早在我们触摸恒星之前，我们就知道引力和时间是联系在一起的。现在，我们对这种独特关系的理解已经达到了一个临界点，使我们能够以以前难以想象的规模操纵力量。"
+ tech_physics_4:0 "平行视窗"
+ tech_physics_4_desc:1 "对$sr_dark_matter$与$astral_threads$的深入研究让我们触碰到了多元宇宙的奥秘，我们已经能够瞥见迥异于当前宇宙的物理模型的一角。"
+ tech_physics_5:0 "万物命题"
+ tech_physics_5_desc:1 "“...因此，我们假设存在的意义，以及所有创造的起源和目的可以概括为一个简单的公式，如下所示...”"
+
+ tech_society_1:0 "生物社会学"
+ tech_society_1_desc:1 "生命是构成社会的基础，通过研究生物学，我们能够从另一个角度理解集体的发展与进步。"
+ tech_society_2:0 "异种生物学"
+ tech_society_2_desc:1 "异种生物学的研究启发我们探索超越传统范式的生命的可能性，全新的生命形式在远离我们熟悉的环境中茁壮成长。每一个新的生物圈都显现出相似之处，使生命本身的起源变得更加清晰。"
+ tech_society_3:0 "银河政治概论"
+ tech_society_3_desc:1 "要治理一个多星系体量的帝国，就应该拥有匹配这一时代的理论。一个政治理论的意义不在于我们一定要去照本宣科的念书，而是以一种目标为核心去规划我们的行为。"
+ tech_society_4:0 "心理史学"
+ tech_society_4_desc:1 "物质结构的限制让我们的历史呈现为一个不断上升的圆环，而只要我们能够对过去发生的事进行精确建模，未来对我们而言就不再扑朔迷离。"
+ tech_society_5:0 "超统一语言"
+ tech_society_5_desc:1 "动作结构、机械波、电磁波、化学信息素...割裂的的信息载体早已成为不同物种之间交流的障碍，如今我们已经跨越了这一天堑，任何智慧生物第一次接触时就能完全理解我们需要表达的信息。"
+
+ breakthrough_society_unlock_tooltip: "['concept_breakthrough_technology', 突破性科技：]进一步解锁£society£§Y社会学研究§!选项"
+ breakthrough_physics_unlock_tooltip: "['concept_breakthrough_technology', 突破性科技：]进一步解锁£physics£§Y物理学研究§!选项"
+ breakthrough_engineering_unlock_tooltip: "['concept_breakthrough_technology', 突破性科技：]进一步解锁£engineering£§Y工程学研究§!选项"
+
+ concept_breakthrough_technology: "突破性科技"
+ concept_breakthrough_technology_desc: "基础性创新往往会释放新的可能性，重塑社会运作和文化演变的方式。突破性技术代表了一个新的知识阶段，每个文明在进步之前都必须实现这一阶段。\n\n在技术情报水平较低的情况下，其他文明可以更快地从邻国那里学到这些见解。"
+
+ ###############
+ # 区划文本修改
+ ###############
+ agriculture_0: "基础农场"
+ agriculture_1: "自动化机械农场"
+ agriculture_2: "生态模拟农场"
+ agriculture_3: "转基因作物工厂"
+ agriculture_4: "纳米食物工厂"
+ agriculture_anglers_0: "基础渔场"
+ agriculture_anglers_1: "深海养殖渔场"
+ agriculture_anglers_2: "生态模拟渔场"
+ agriculture_anglers_3: "基因水产养殖厂"
+ agriculture_anglers_4: "纳米料理工厂"
+ mining_0: "基础开采站"
+ mining_1: "机械化开采矿山"
+ mining_2: "热力压裂矿井"
+ mining_3: "地心矿井"
+ mining_4: "矿物分离开采站"
+ generator_0: "基础发电厂"
+ generator_1: "高能电容器"
+ generator_2: "调制场发电厂"
+ generator_3: "纠缠发电厂"
+ generator_4: "量子场操控发电厂"
+
+ agriculture_0_desc: "动力机械在田地间拽把扶犁，恍惚如同昔日文明的第一个黎明，我们铲下第一抔黄土。"
+ agriculture_1_desc: "全自动联合机械在无垠的田野上轰鸣，旧的收去，新的播下，生命在此间茁壮生长。"
+ agriculture_2_desc: "从轨道到地幔，无数精密的传感仪器监控着这片地区的环境参数，确保作物生长的每一个环节都在我们的完美掌控之中。"
+ agriculture_3_desc: "经过人工设计的基因在营养水槽里生长，名为“作物”的生化机械以最大的效率将每一缕光芒和每一丝养分转化为我们所需求的营养。"
+ agriculture_4_desc: "无数如同微尘一般的机器人在营养槽内将原子堆叠为美味又健康的美食。"
+
+ agriculture_anglers_0_desc: "在餐桌上，除非历遍全程，否则无人能够分辨哪一条鱼来自深海还是我们的养殖场。"
+ agriculture_anglers_1_desc: "总有人热衷于产自深海的原生态鱼肉，而我们的养殖场即是无垠深海。"
+ agriculture_anglers_2_desc: "通过遍布海底的仪器，我们能够控制洋流创造出巨大的天然渔场，而不必时刻忧心人工养殖场的各种问题。"
+ agriculture_anglers_3_desc: "通过基因工程，我们能够创造出前人从未品尝过的鲜美鱼类，这些脆弱的小生命可比数亿年的进化更加好吃。"
+ agriculture_anglers_4_desc: "无数如同微尘一般的机器人在营养槽内将原子堆叠为鲜美的鱼肉料理。"
+
+ mining_0_desc: "那长长的巷道留下的是一双双沉重的足迹，而那漆黑的轨道上飞驰的是光明。"
+ mining_1_desc: "凿碎、咀嚼、吞噬，巨大的机械联合体将山脉吃尽，崭新的平原上只剩下高纯度的矿物锭。"
+ mining_2_desc: "热量足以与恒星媲美的超高温蒸汽通过管道泵入大地，将地壳撕裂，迫使星球吐出我们需要的矿物。"
+ mining_3_desc: "我们直抵深渊，在星球的心脏起舞，而群星回馈向我们以丰厚的矿物。"
+ mining_4_desc: "磅礴的能量将区域内的一切物体化为最基础的原子结构，而管道的终端则会将这些粒子重新组装为不含半分杂质的完美矿物。"
+
+ generator_0_desc: "蒸汽咆哮，涡轮飞旋，线圈滋鸣。"
+ generator_1_desc: "巨大的电容器阵列铺满了目光所及的每一处空间，磅礴的能量在其间涌动。"
+ generator_2_desc: "通过复杂的算法，我们向狂暴的能量贯彻我们的意志，将其驯服为温顺的电流。"
+ generator_3_desc: "我们在宇宙的底层规律之间榨取无尽的能量，文明的星光将永恒的闪耀。"
+ generator_4_desc: "自现实之外，我们取得否定现实的能量。"
  
  
 

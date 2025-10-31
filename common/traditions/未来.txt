@@ -1,15 +1,44 @@
 tr_future_adopt = {
+	unlocks_agenda = agenda_tr_future
     custom_tooltip = tr_future_adopt_effect
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_ascension_perks_3"
-			num_ascension_perks > 2
+		OR = {
+			has_technology = tech_interstellar_society
+			has_technology = tech_Interstellar_consciousness
 		}
 	}
 }
 
 tr_future_finish = {
     custom_tooltip = tr_future_finish_desc
+	on_enabled = {
+		if = {
+			limit = {
+				is_ai = no
+				NOR = {
+					has_technology = tech_ascension_theory
+				}
+			}
+			add_research_option = tech_ascension_theory
+			add_tech_progress = {
+				tech = tech_ascension_theory
+				progress = 0.15
+			}
+		}
+		if = {
+			limit = {
+				is_ai = yes
+				NOR = {
+					has_technology = tech_ascension_theory
+				}
+			}
+			add_research_option = tech_ascension_theory
+			add_tech_progress = {
+				tech = tech_ascension_theory
+				progress = 0.9
+			}
+		}
+	}
 	modifier = {
 		ascension_perks_add = 1
 	}
@@ -17,8 +46,55 @@ tr_future_finish = {
 	tradition_swap = {
 		name = tr_future_finish_shared_burden_finish
 		custom_tooltip = tr_future_finish_shared_burden_finish_desc
+		on_enabled = {
+			if = {
+				limit = {
+					is_ai = no
+					NOR = {
+						has_technology = tech_ascension_theory
+					}
+				}
+				add_research_option = tech_ascension_theory
+				add_tech_progress = {
+					tech = tech_ascension_theory
+					progress = 0.25
+				}
+			}
+			if = {
+				limit = {
+					is_ai = yes
+					NOR = {
+						has_technology = tech_ascension_theory
+					}
+				}
+				add_research_option = tech_ascension_theory
+				add_tech_progress = {
+					tech = tech_ascension_theory
+					progress = 0.9
+				}
+			}
+			if = {
+				limit = {
+					has_valid_civic = civic_machine_liberator
+					has_technology = tech_ascension_theory
+					NOT = { has_country_flag = communist_society }
+				}
+				set_country_flag = communist_society
+				country_event = { id = ethic_communist_society.2 days = 30 }
+			}
+		}
 		trigger = {
-			has_valid_civic = civic_shared_burden
+			OR = {
+				has_ethic = ethic_fanatic_egalitarian
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_socialistic
+			}
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+			is_democratic_country = yes
+			has_technology = tech_ascension_theory
 		}
 		modifier = {
 			ascension_perks_add = 1
@@ -31,28 +107,28 @@ tr_future_finish = {
 
 tr_future_technology = {
     custom_tooltip = tr_future_technology_desc
-	modifier = {
-		all_technology_research_speed = 0.1
-		pop_government_ethic_attraction = 0.1
-		planet_pops_upkeep_mult = 0.1
-	}
-
+	unlocks_agenda = agenda_leadership_conditioning
 	tradition_swap = {
-		name = tr_future_technology_soc
+		name = tr_domination_adopt_void
 		inherit_name = yes
 		inherit_icon = yes
-		inherit_effects = no
+		custom_tooltip = tr_future_technology_ges_desc
 		trigger = {
-			has_valid_civic = civic_ultravisionary_socialism
+			has_ethic = ethic_gestalt_consciousness
 		}
-		custom_tooltip = tr_future_technology_soc_desc
 		modifier = {
+			all_technology_research_speed = 0.1
 			pop_government_ethic_attraction = 0.1
 			planet_pops_upkeep_mult = 0.1
 		}
 		weight = {
 			factor = 1
 		}
+	}
+	modifier = {
+		all_technology_research_speed = 0.1
+		pop_government_ethic_attraction = 0.1
+		planet_pops_upkeep_mult = 0.1
 	}
 	ai_weight = {
 		factor = 5000
@@ -62,6 +138,7 @@ tr_future_technology = {
 tr_future_industry = {
     custom_tooltip = tr_future_industry_desc
 	modifier = {
+		bonus_automated_workforce_mult = 1
 		pop_government_ethic_attraction = 0.1
 		planet_pops_upkeep_mult = 0.1
 	}
@@ -265,46 +342,6 @@ tr_future_society = {
 		if = {
 			limit = {
 				has_technology = tech_ascension_theory
-				has_ethic = ethic_fanatic_socialism
-			}
-			add_modifier = {
-				modifier = "mod_future_ethic_fanatic_socialism"
-				days = -1
-			}
-		}
-		if = {
-			limit = {
-				has_technology = tech_ascension_theory
-				has_ethic = ethic_socialism
-			}
-			add_modifier = {
-				modifier = "mod_future_ethic_socialism"
-				days = -1
-			}
-		}
-		if = {
-			limit = {
-				has_ethic = ethic_fanatic_capitalism
-				has_technology = tech_ascension_theory
-				}
-			add_modifier = {
-				modifier = "mod_future_ethic_fanatic_capitalism"
-				days = -1
-			}
-		}
-		if = {
-			limit = {
-				has_technology = tech_ascension_theory
-				has_ethic = ethic_capitalism
-			}
-			add_modifier = {
-				modifier = "mod_future_ethic_capitalism"
-				days = -1
-			}
-		}
-		if = {
-			limit = {
-				has_technology = tech_ascension_theory
 				has_ethic = ethic_gestalt_consciousness
 			}
 			add_modifier = {
@@ -329,41 +366,15 @@ tr_future_economy = {
 	}
 
 	tradition_swap = {
-		name = tr_future_economy_soc
-		custom_tooltip = tr_future_economy_soc_desc
-		inherit_name = yes
+		name = tr_future_economy_ges
+		custom_tooltip = tr_future_economy_ges_desc
 		inherit_icon = yes
 		trigger = {
-			OR = {
-				has_ethic = ethic_fanatic_socialism
-				has_valid_civic = civic_peoples_republic
-			}
-			NOT = { has_valid_civic = civic_state_owned_enterprises }
+			has_ethic = ethic_gestalt_consciousness
+			NOT = { has_technology = tech_ascension_theory }
 		}
 		modifier = {
-			pop_government_ethic_attraction = 0.1
-			planet_pops_upkeep_mult = 0.1
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_future_economy_state_owned_enterprises
-		custom_tooltip = tr_future_economy_state_owned_enterprises_desc
-		inherit_name = yes
-		inherit_icon = yes
-		trigger = {
-			OR = {
-				has_valid_civic = civic_state_owned_enterprises
-				has_valid_civic = civic_glory_and_dream
-			}
-		}
-		modifier = {
-			planet_branch_offices_cost_mult = -0.5
-			branch_office_value_mult = 0.25
-			pop_government_ethic_attraction = 0.1
+			planet_jobs_produces_mult = 0.25
 			planet_pops_upkeep_mult = 0.1
 		}
 		weight = {
@@ -376,14 +387,11 @@ tr_future_economy = {
 		custom_tooltip = tr_future_economy_ges_desc
 		inherit_icon = yes
 		trigger = {
-			OR = {
-				has_ethic = ethic_gestalt_consciousness
-				has_civic = civic_network_of_the_mind_machine
-				has_civic = civic_network_of_the_mind_true_hive
-			}
+			has_ethic = ethic_gestalt_consciousness
+			has_technology = tech_ascension_theory
 		}
 		modifier = {
-			country_trade_fee = -10
+			planet_jobs_trade_produces_add = 10
 			planet_jobs_produces_mult = 0.25
 			planet_pops_upkeep_mult = 0.1
 		}

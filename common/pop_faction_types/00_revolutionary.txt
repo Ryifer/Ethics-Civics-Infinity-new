@@ -8,10 +8,33 @@ revolutionary = {
 	use_guiding_ethic_as_pop_filter = no
 	unique = yes
 	support_multiplier = 1
+
 	resources = {
 		category = pop_factions
 		produces = {
-			unity = 0.5
+			trigger = {
+				owner = {
+					NOR = {
+						has_civic = civic_crowdsourcing
+						has_civic = civic_corporate_crowdsourcing
+					}
+				}
+			}
+			unity = @faction_base_output
+		}
+		produces = {
+			trigger = {
+				owner = {
+					OR = {
+						has_civic = civic_crowdsourcing
+						has_civic = civic_corporate_crowdsourcing
+					}
+				}
+			}
+			engineering_research = 0.05
+			society_research = 0.05
+			physics_research = 0.05
+			mult = @crowdsourcing_multiplier
 		}
 	}
 	is_potential = {
@@ -30,15 +53,7 @@ revolutionary = {
 	}
 	can_join_faction = {
 		can_join_faction_mentally = yes
-		NOR = {
-			has_ethic = ethic_pacifist
-			has_ethic = ethic_capitalism
-		}
-		OR = { # Only Same Ideology or Job
-			can_join_faction_revolutionary_i = yes
-			can_join_faction_revolutionary_c = yes
-			can_join_faction_revolutionary_j = yes
-		}
+		has_ethic = ethic_militarist
 	}
 	attraction = {
 		base = 100
@@ -48,7 +63,7 @@ revolutionary = {
 			root = {
 				exists = leader
 				leader = {
-					leader_class = ruler
+					is_ruler = yes
 				}
 			}
 		}
@@ -65,7 +80,7 @@ revolutionary = {
 			factor = 2.0
 			OR = {
 				has_ethic = ethic_militarist
-				has_ethic = ethic_socialism
+				has_ethic = ethic_egalitarian
 			}
 		}
 		# Actions
@@ -90,13 +105,15 @@ revolutionary = {
 			OR = {
 				AND = {
 					exists = owner
-					owner = { is_socialism = yes }
+					owner = { is_egalitarian = yes }
 				}
-				has_ethic = ethic_socialism
+				has_ethic = ethic_egalitarian
 			}
-			OR = {
-				has_job = conscript
-				has_job = conscript_uncapped
+			any_owned_pop_job = {
+				OR = {
+					has_job_type = conscript
+					has_job_type = conscript_uncapped
+				}
 			}
 		}
 		modifier = {
@@ -104,13 +121,15 @@ revolutionary = {
 			OR = {
 				AND = {
 					exists = owner
-					owner = { is_socialism = yes }
+					owner = { is_egalitarian = yes }
 				}
-				has_ethic = ethic_socialism
+				has_ethic = ethic_egalitarian
 			}
-			OR = {
-				has_job = soldier
-				has_job = foundry
+			any_owned_pop_job = {
+				OR = {
+					has_job_type = soldier
+					has_job_type = foundry
+				}
 			}
 		}
 		# 万众一心
@@ -126,10 +145,7 @@ revolutionary = {
 		base = 100
 		modifier = { # Militarist
 			factor = 1.5
-			OR = {
-				leader_class = admiral
-				leader_class = general
-			}
+			leader_class = commander
 		}
 		modifier = {
 			factor = 0
@@ -158,7 +174,7 @@ revolutionary = {
 			potential = {
 				exists = owner
 				owner = {
-					is_socialism = no
+					is_egalitarian = no
 					NOR = {
 						is_dictatorial = yes
 						is_imperial = yes
@@ -227,15 +243,8 @@ revolutionary = {
 			potential = {
 				exists = owner
 				owner = {
-					is_socialism = no
+					is_egalitarian = no
 					is_ai = no # 仅玩家，减少卡顿
-					any_owned_pop = {
-						OR = {
-							has_living_standard = { type = living_standard_utopian }
-							has_living_standard = { type = living_standard_shared_burden }
-							has_living_standard = { type = living_standard_normal }
-						}
-					}
 				}
 			}
 			trigger = {
@@ -258,15 +267,8 @@ revolutionary = {
 			potential = {
 				exists = owner
 				owner = {
-					is_socialism = no
+					is_egalitarian = no
 					is_ai = no # 仅玩家，减少卡顿
-					any_owned_pop = {
-						NOR = {
-							has_living_standard = { type = living_standard_utopian }
-							has_living_standard = { type = living_standard_shared_burden }
-							has_living_standard = { type = living_standard_normal }
-						}
-					}
 				}
 			}
 			trigger = {
@@ -303,7 +305,7 @@ revolutionary = {
 			potential = {
 				exists = owner
 				owner = {
-					is_socialism = yes
+					is_egalitarian = yes
 				}
 			}
 			trigger = {
@@ -329,7 +331,7 @@ revolutionary = {
 					is_country_type = default
 					OR = {
 						is_egalitarian = yes
-						is_socialism = yes
+						is_egalitarian = yes
 					}
 				}
 			}
@@ -485,12 +487,16 @@ revolutionary = {
 			remove_modifier = suppressed_militarist
 		}
 	}
+
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"
 			description = "EMBRACE_FACTION_DESC"
-			cost = { unity = 5000 }
-			
+
+			cost = {
+				unity = 5000
+			}
+
 			potential = {
 				exists = owner
 				owner = {
@@ -500,44 +506,29 @@ revolutionary = {
 					}
 				}
 			}
+
 			valid = {
 				custom_tooltip = {
 					fail_text = EMBRACE_FACTION_COOLDOWN
 					parameter:empire = {
-						NOT = {
-							has_modifier = embraced_faction_timer
-						}
+						NOT = { has_modifier = embraced_faction_timer }
 					}
 				}
 				support > 0.15
 				parameter:empire = {
-					NOT = {
-						is_militarist = yes
-					}
+					NOT = { has_ethic = "ethic_fanatic_militarist" }
 				}
 			}
+
 			effect = {
-				add_modifier = {
-					modifier = embraced_faction
-					days = 3600
-				}
+				add_modifier = { modifier = embraced_faction days = 3600 }
 				parameter:empire = {
 					shift_ethic = ethic_militarist
 					hidden_effect = {
-						add_modifier = {
-							modifier = embraced_faction_timer
-							days = 3600
-						}
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
 						every_pop_faction = {
-							limit = {
-								NOT = {
-									is_same_value = root
-								}
-							}
-							add_modifier = {
-								modifier = embraced_another_faction
-								days = 3600
-							}
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
 						}
 					}
 				}
@@ -549,29 +540,36 @@ revolutionary = {
 								is_ai = no
 								is_country_type = default
 								has_communications = prev
+								has_intel_level = {
+									who = prev
+									category = government
+									level >= 1
+								}
 							}
-							country_event = {
-								id = factions.2000
-							}
+							country_event = { id = factions.2000 }
 						}
 					}
 				}
 			}
+
 			ai_weight = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.25
+					support < 0.50
+					owner = {
+						has_ethic = ethic_militarist
+					}
 				}
 				modifier = {
 					factor = 0
-					support < 0.45
-					NOT = {
-						owner = {
-							exists = ruler
-							ruler = {
-								leader_of_faction = revolutionary
-							}
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_faction = {
+							count < 4
 						}
 					}
 				}
@@ -580,58 +578,90 @@ revolutionary = {
 		promote_faction = {
 			title = "PROMOTE_FACTION"
 			description = "PROMOTE_FACTION_DESC"
+
 			potential = {
-				NOR = {
-					has_pop_faction_flag = promote_faction
-					has_pop_faction_flag = suppress_faction
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_militarist
+						has_modifier = promoted_militarist
+					}
 				}
 			}
+
 			effect = {
-				set_pop_faction_flag = promote_faction
+				parameter:empire = {
+					add_modifier = { modifier = promoted_militarist days = -1 }
+				}
 			}
-			ai_weight = { base = 0 }
+
+			ai_weight = {
+				base = 0
+			}
 		}
 		cancel_promote_faction = {
 			title = "CANCEL_PROMOTE_FACTION"
 			description = "CANCEL_PROMOTE_FACTION_DESC"
+
 			potential = {
-				has_pop_faction_flag = promote_faction
+				exists = owner
+				parameter:empire = { has_modifier = promoted_militarist }
 			}
+
 			effect = {
-				remove_pop_faction_flag = promote_faction
+				parameter:empire = {
+					remove_modifier = promoted_militarist
+				}
 			}
-			ai_weight = { base = 0 }
+
+			ai_weight = {
+				base = 0
+			}
 		}
 		suppress_faction = {
 			title = "SUPPRESS_FACTION"
 			description = "SUPPRESS_FACTION_DESC"
+
 			potential = {
-				NOR = {
-					has_pop_faction_flag = promote_faction
-					has_pop_faction_flag = suppress_faction
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_militarist
+						has_modifier = promoted_militarist
+					}
 				}
 			}
+
 			effect = {
-				set_pop_faction_flag = suppress_faction
-				owner = {
-					set_country_flag = suppress_revolutionary
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_militarist days = -1 }
 				}
 			}
-			ai_weight = { base = 0 }
+
+			ai_weight = {
+				base = 0
+			}
 		}
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
 			description = "CANCEL_SUPPRESS_FACTION_DESC"
+
 			potential = {
-				has_pop_faction_flag = suppress_faction
+				exists = owner
+				parameter:empire = { has_modifier = suppressed_militarist }
 			}
+
 			effect = {
-				remove_pop_faction_flag = suppress_faction
-				owner = {
-					remove_country_flag = suppress_revolutionary
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_militarist
 				}
 			}
-			ai_weight = { base = 0 }
+
+			ai_weight = {
+				base = 0
+			}
 		}
 	}
 }

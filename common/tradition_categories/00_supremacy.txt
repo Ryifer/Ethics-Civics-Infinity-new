@@ -23,22 +23,11 @@ tradition_supremacy = {
 	}
 
 	potential = {
-		NOR = {
-		    has_tradition = tr_noble_adopt
-		    has_tradition = tr_revolution_adopt
-		}
-		NOR = {
-			has_valid_civic = civic_liberator
-			has_valid_civic = civic_machine_liberator
-		}
+		NOT = { has_tradition = tr_revolution_adopt }
 	}
 
 	ai_weight = {
 		factor = 10
-		modifier = {
-			factor = 1000
-			is_homicidal = yes
-		}
 		modifier = {
 			factor = 10
 			has_ascension_perk = ap_become_the_crisis
@@ -52,30 +41,24 @@ tradition_supremacy = {
 			has_ethic = ethic_fanatic_militarist
 		}
 		modifier = {
-			factor = 1.5
-			has_ethic = ethic_xenophobe
-			is_pacifist = no
-		}
-		modifier = {
 			factor = 2
+			has_ethic = ethic_xenophobe
+		}
+		modifier = {
+			factor = 3
 			has_ethic = ethic_fanatic_xenophobe
-			is_pacifist = no
-		}
-		modifier = {
-			factor = 0.5
-			has_ethic = ethic_egalitarian
-		}
-		modifier = {
-			factor = 0.1
-			has_ethic = ethic_fanatic_egalitarian
 		}
 		modifier = {
 			factor = 5
 			is_homicidal = yes
 		}
 		modifier = {
+			factor = 0.1
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
 			factor = 0.01
-			is_pacifist = yes
+			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
 }

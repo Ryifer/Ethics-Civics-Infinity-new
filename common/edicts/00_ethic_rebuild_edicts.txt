@@ -21,8 +21,8 @@ family_planning = {
 	resources = {
 		category = edicts
 		upkeep = {
-			unity = 1.0
-			multiplier = trigger:num_pops
+			unity = 0.01
+			multiplier = trigger:count_owned_pop_amount
 		}
 	}
 
@@ -30,14 +30,14 @@ family_planning = {
 		planet_jobs_specialist_produces_mult = 0.05
 		empire_size_pops_mult = -0.25
 		pop_amenities_usage_mult = -0.25
-		pop_growth_speed_reduction = 0.50
+		pop_decline_speed = 0.50
 		planet_pop_assembly_mult = -0.33
 		country_leader_pool_size = -1
 	}
 
 	potential = {
 		OR = {
-			NOT = { is_country_type = default_ev }
+			is_no_planet_country = no
 			has_origin = origin_ev_both_choosen
 			has_civic = civic_ev_planet_and_fleet
 			has_ascension_perk = ev_land_planets
@@ -58,8 +58,8 @@ equal_gift = {
 	resources = {
 		category = edicts
 		upkeep = {
-			energy = 1
-			multiplier = trigger:num_pops
+			energy = 0.01
+			multiplier = trigger:count_owned_pop_amount
 		}
 	}
 	effect = {
@@ -70,6 +70,7 @@ equal_gift = {
 		OR = {
 			has_tradition = tr_genetics_finish
 			has_tradition = tr_genetics_finish_extra_traits
+			has_technology = tech_genetics_retrovirus
 		}
 	}
 	ai_weight = { weight = 999 }
@@ -95,7 +96,7 @@ synthetic_Love = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.3
+		logistic_growth_mult = 0.3
 		biological_pop_happiness = 0.1
 		pop_amenities_usage_mult = 0.2
 	}
@@ -119,7 +120,7 @@ expanded_breeding_program_servitor = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.20
+		logistic_growth_mult = 0.20
 		biological_pop_happiness = 0.05
 		lithoid_pop_happiness = 0.05
 		planet_pops_organics_food_upkeep_mult = 0.25
@@ -158,6 +159,7 @@ commercializing_academic_resources = {
 	}
 
 	modifier = {
+		planet_researchers_trade_produces_add = 1
 		planet_jobs_physics_research_produces_mult = -0.1
 		planet_jobs_society_research_produces_mult = -0.1
 		planet_jobs_engineering_research_produces_mult = -0.1
@@ -165,8 +167,8 @@ commercializing_academic_resources = {
 
 	potential = {
 		OR = {
-			has_ethic = ethic_capitalism
-			has_ethic = ethic_fanatic_capitalism
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
 
@@ -196,17 +198,13 @@ academic_resources_open_access = {
 
 	potential = {
 		OR = {
-			has_ethic = ethic_socialism
-			has_ethic = ethic_fanatic_socialism
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+			has_valid_civic = civic_atomic_society
 		}
 		OR = {
 			has_ethic = ethic_materialist
 			has_ethic = ethic_fanatic_materialist
-		}
-		OR = {
-			has_valid_civic = civic_forever_with_us
-			has_ethic = ethic_egalitarian
-			has_ethic = ethic_fanatic_egalitarian
 		}
 		NOT = { has_edict = indefinite_patent_act }
 	}
@@ -218,7 +216,7 @@ academic_resources_open_access = {
 			OR = {
 				has_ethic = ethic_fanatic_egalitarian
 				has_ethic = ethic_fanatic_materialist
-				has_ethic = ethic_fanatic_socialism
+				has_ethic = ethic_fanatic_egalitarian
 			}
 		}
 	}
@@ -472,7 +470,7 @@ education_campaign = {
 	potential = {
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
-			has_ethic = ethic_fanatic_capitalism
+			has_ethic = ethic_fanatic_authoritarian
 		}
 		has_technology = tech_planetary_unification
 	}
@@ -499,7 +497,7 @@ nutritional_plenitude = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.10
+		logistic_growth_mult = 0.10
 		biological_pop_happiness = 0.05
 		lithoid_pop_happiness = 0.05
 		empire_size_pops_mult = 0.10
@@ -510,7 +508,7 @@ nutritional_plenitude = {
 	potential = {
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
-			has_ethic = ethic_fanatic_capitalism
+			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
 
@@ -601,8 +599,8 @@ philosophical_thinking = {
 	resources = {
 		category = edicts
 		upkeep = {
-			unity = 1.5
-			multiplier = trigger:num_pops
+			unity = 0.015
+			multiplier = trigger:count_owned_pop_amount
 		}
 	}
 
@@ -627,7 +625,7 @@ philosophical_thinking = {
 
 ###镇压思潮
 
-#威权主义
+#权威主义
 expel_ethic_authoritarian = {
 	length = -1
 	icon = "GFX_edict_type_time"
@@ -714,7 +712,7 @@ expel_ethic_egalitarian = {
 	}
 }
 
-#种族主义
+#排外主义
 expel_ethic_xenophobe = {
 	length = -1
 	icon = "GFX_edict_type_time"
@@ -929,7 +927,7 @@ expel_ethic_spiritualist = {
 	}
 }
 
-#未来主义
+#机械主义
 expel_ethic_materialist = {
 	length = -1
 	icon = "GFX_edict_type_time"
@@ -973,7 +971,7 @@ expel_ethic_materialist = {
 }
 
 #社会主义
-expel_ethic_socialism = {
+expel_ethic_egalitarian = {
 	length = -1
 	icon = "GFX_edict_type_time"
 	resources = {
@@ -984,7 +982,7 @@ expel_ethic_socialism = {
 		}
 	}
 	potential = {
-		has_ethic = ethic_socialism
+		has_ethic = ethic_egalitarian
 		OR = {
 			has_country_flag = suppress_socialists
 			has_country_flag = suppress_pioneer
@@ -997,7 +995,7 @@ expel_ethic_socialism = {
 	effect = {
 		custom_tooltip = expel_ethic_custom_tooltip
 		hidden_effect = {
-			country_remove_ethic = ethic_socialism
+			country_remove_ethic = ethic_egalitarian
 			add_modifier = { modifier = expel_faction_timer days = 3600 }
 			every_pop_faction = {
 				limit = {
@@ -1016,7 +1014,7 @@ expel_ethic_socialism = {
 }
 
 #资本主义
-expel_ethic_capitalism = {
+expel_ethic_authoritarian = {
 	length = -1
 	icon = "GFX_edict_type_time"
 	resources = {
@@ -1027,7 +1025,7 @@ expel_ethic_capitalism = {
 		}
 	}
 	potential = {
-		has_ethic = ethic_capitalism
+		has_ethic = ethic_authoritarian
 		OR = {
 			has_country_flag = suppress_bankers
 			has_country_flag = suppress_industrialist
@@ -1040,7 +1038,7 @@ expel_ethic_capitalism = {
 	effect = {
 		custom_tooltip = expel_ethic_custom_tooltip
 		hidden_effect = {
-			country_remove_ethic = ethic_capitalism
+			country_remove_ethic = ethic_authoritarian
 			add_modifier = { modifier = expel_faction_timer days = 3600 }
 			every_pop_faction = {
 				limit = {

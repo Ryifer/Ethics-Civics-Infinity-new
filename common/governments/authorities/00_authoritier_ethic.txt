@@ -1,0 +1,290 @@
+#直接民主
+auth_direct_democratic = {
+    election_term_years = 5
+    re_election_allowed = yes
+    election_type = democratic
+
+    uses_mandates = yes
+
+    ruler_council_position = councilor_ruler_direct_democratic
+
+    possible = {
+        origin = {
+            NOR = {
+                text = origin_legendary_leader_no_gov_change
+                value = origin_legendary_leader_dictatorial
+                value = origin_legendary_leader_imperial
+            }
+        }
+        ethics = {
+            NOR = {
+                value = ethic_gestalt_consciousness
+                value = ethic_fanatic_authoritarian
+                value = ethic_authoritarian
+            }
+        }
+    }
+
+    country_modifier = {
+        pop_cat_worker_political_power = 1
+        pop_cat_specialist_political_power = 1
+        pop_cat_ruler_political_power = 1
+        custom_tooltip = auth_direct_democratic_tt
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_cyber_creed_direct_democratic"
+        description = "auth_cyber_creed_direct_democratic_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = cyber_creed_advanced_government
+        }
+        modifier = {
+            custom_tooltip = auth_direct_democratic_election_tt
+            show_only_custom_tooltip = no
+            pop_ethic_spiritualist_attraction_mult = 0.4
+            pop_cyborg_happiness = 0.3
+            pop_non_cyborg_happiness = -0.3
+            pop_factions_produces_mult = 0.2
+            all_technology_research_speed = 0.1
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_cyber_direct_democratic_individualist"
+        description = "auth_cyber_direct_democratic_individualist_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = cyber_individualist
+        }
+        modifier = {
+            custom_tooltip = auth_direct_democratic_election_tt
+            show_only_custom_tooltip = no
+            pop_cyborg_happiness = 0.4
+            pop_non_cyborg_happiness = -0.3
+            empire_size_pops_mult = -0.3
+            leaders_cost_mult = -0.5
+            pop_factions_produces_mult = 0.4
+            planet_jobs_specialist_produces_mult = 0.2
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_cyber_direct_democratic_collectivist"
+        description = "auth_cyber_direct_democratic_collectivist_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = cyber_collectivist
+        }
+        modifier = {
+            custom_tooltip = auth_direct_democratic_election_tt
+            show_only_custom_tooltip = no
+            pop_non_cyborg_happiness = -0.3
+            empire_size_pops_mult = -0.3
+            leaders_cost_mult = -0.5
+            planet_jobs_worker_produces_mult = 0.3
+            planet_stability_add = 30
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_synth_direct_democratic_physical"
+        description = "auth_synth_direct_democratic_physical_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = synth_physical
+        }
+
+        modifier = {
+            custom_tooltip = auth_direct_democratic_election_tt
+            show_only_custom_tooltip = no
+            country_edict_fund_mult = 1
+            pop_government_ethic_attraction = -0.5
+            planet_resettlement_unemployed_mult = 2
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_synth_direct_democratic_virtual"
+        description = "auth_synth_direct_democratic_virtual_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = synth_virtual
+        }
+        modifier = {
+            custom_tooltip = auth_direct_democratic_election_tt
+            show_only_custom_tooltip = no
+            country_edict_fund_mult = 1
+            pop_government_ethic_attraction = -0.5
+            country_war_exhaustion_mult = -1
+            ship_speed_mult = 0.3
+            starbase_shipyard_build_speed_mult = 0.5
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+    }
+
+    # BioGenesis Genetic Ascension Situation Authority Swaps
+    # Purity
+    # Phenotypical Autonomy (Democratic)
+
+    advanced_authority_swap	= {
+        name = "auth_bio_direct_democratic_purity"
+        description = "auth_bio_direct_democratic_purity_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = bio_purity
+        }
+        modifier = {
+            custom_tooltip = auth_bio_direct_democratic_purity_tt
+            show_only_custom_tooltip = no
+            country_organic_trust_cap_add = 50
+            logistic_growth_mult = 3
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+        }
+    }
+
+    # Cloning
+    # Cordant Multiplicity (Democratic)
+
+    advanced_authority_swap	= {
+        name = "auth_bio_direct_democratic_cloning"
+        description = "auth_bio_direct_democratic_cloning_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = bio_cloning
+        }
+        modifier = {
+            custom_tooltip = auth_gene_direct_democratic_tt
+            show_only_custom_tooltip = no
+            bonus_pop_growth = 1.5
+            empire_size_pops_mult = -0.5
+        }
+    }
+
+    # Mutation
+    # Biodiverse Liberty (Democratic)
+
+    advanced_authority_swap	= {
+        name = "auth_bio_direct_democratic_mutation"
+        description = "auth_bio_direct_democratic_mutation_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = bio_mutation
+            NOT = { has_origin = origin_evolutionary_predators }
+        }
+        modifier = {
+            custom_tooltip = auth_direct_democratic_tt
+            auto_mod_monthly_mult = 0.5
+            pop_bonus_workforce_mult = 0.1
+            pop_happiness = 0.2
+            country_unity_produces_mult = 0.2
+            all_technology_research_speed = 0.1
+            country_leader_pool_size = 1
+        }
+    }
+
+    # EvoPred (Democratic)
+
+    advanced_authority_swap	= {
+        name = "auth_bio_direct_democratic_evopred"
+        description = "auth_bio_direct_democratic_evopred_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            has_country_flag = bio_mutation
+            has_origin = origin_evolutionary_predators
+        }
+        modifier = {
+            custom_tooltip = auth_bio_direct_democratic_evopred_tt
+            show_only_custom_tooltip = no
+            army_health = 0.33
+            army_morale = 0.33
+
+        }
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_shroud_direct_democratic_transcendent"
+        description = "auth_shroud_direct_democratic_transcendent_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            is_transcendent_authority = yes
+        }
+        modifier = {
+            psionic_aura_hyperlane_range_add = 2
+            job_telepath_per_pop = 0.02
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+            show_only_custom_tooltip = no
+            custom_tooltip = auth_direct_democratic_election_tt
+        }
+    }
+
+    advanced_authority_swap	= {
+        name = "auth_shroud_direct_democratic_corporeal"
+        description = "auth_shroud_direct_democratic_corporeal_desc"
+        inherit_icon = no
+        inherit_effects = no
+        trigger = {
+            is_scope_valid = yes
+            is_corporeal_authority = yes
+        }
+        modifier = {
+            psionic_aura_effectiveness_mult = 0.25
+            psionic_pop_bonus_workforce_mult = 0.25
+            pop_cat_worker_political_power = 1
+            pop_cat_specialist_political_power = 1
+            pop_cat_ruler_political_power = 1
+            show_only_custom_tooltip = no
+            custom_tooltip = auth_direct_democratic_election_tt
+        }
+    }
+
+    random_weight = {
+        modifier = {
+            factor = 2
+        }
+    }
+
+    tags = {
+        AUTHORITY_SUCCESSION_TYPE
+        AUTHORITY_ELECTION_DIRECT_DEMOCRATIC
+    }
+}

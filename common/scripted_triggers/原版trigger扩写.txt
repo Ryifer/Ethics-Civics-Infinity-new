@@ -9,8 +9,8 @@ is_fanatic = {
 		has_ethic = ethic_fanatic_spiritualist
 		has_ethic = ethic_fanatic_xenophile
 		has_ethic = ethic_fanatic_xenophobe
-		has_ethic = ethic_fanatic_socialism
-		has_ethic = ethic_fanatic_capitalism
+		has_ethic = ethic_fanatic_egalitarian
+		has_ethic = ethic_fanatic_authoritarian
 	}
 }
 is_fanatical = {
@@ -23,41 +23,136 @@ is_fanatical = {
 		has_ethic = ethic_fanatic_egalitarian
 		has_ethic = ethic_fanatic_militarist
 		has_ethic = ethic_fanatic_pacifist
-		has_ethic = ethic_fanatic_socialism
-		has_ethic = ethic_fanatic_capitalism
+		has_ethic = ethic_fanatic_egalitarian
+		has_ethic = ethic_fanatic_authoritarian
+	}
+}
+
+#人口属于哪个派系
+is_owner_ethic_pop_faction = {
+	switch = {
+		trigger = is_pop_faction_type
+		socialists = {
+			owner = { is_egalitarian = yes }
+		}
+		bankers = {
+			owner = { is_authoritarian = yes }
+		}
+		industrialist = {
+			owner = { is_authoritarian = yes }
+		}
+		prosperity = {
+			owner = { is_pacifist = yes }
+		}
+		philosopher = {
+			owner = { is_pacifist = yes }
+		}
+		entrepreneurs = {
+			owner = { is_egalitarian = yes }
+		}
+		imperialist = {
+			owner = { is_militarist = yes }
+		}
+		revolutionary = {
+			owner = { is_militarist = yes }
+		}
+		isolationist = {
+			owner = { is_xenophobe = yes }
+		}
+		supremacist = {
+			owner = { is_xenophobe = yes }
+		}
+		technologist = {
+			owner = { is_materialist = yes }
+		}
+		competitors = {
+			owner = { is_materialist = yes }
+		}
+		totalitarian = {
+			owner = { is_authoritarian = yes }
+		}
+		civil_official = {
+			owner = { is_authoritarian = yes }
+		}
+		traditionalist = {
+			owner = { is_spiritualist = yes }
+		}
+		secular = {
+			owner = { is_spiritualist = yes }
+		}
+		xenoist = {
+			owner = { is_xenophile = yes }
+		}
+		proletarians = {
+			owner = { is_xenophile = yes }
+		}
+		compradors = {
+			owner = { is_xenophile = yes }
+		}
+		default = {
+			always = yes
+		}
 	}
 }
 
 #专家岗位判定
-can_fill_specialist_job = {
-	custom_tooltip = SPECIALIST_JOB_TRIGGER
-	hidden_trigger = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-		exists = owner
-		OR = {
-			is_enslaved = no
-			has_slavery_type = { type = slavery_indentured }
-			owner = { has_valid_civic = civic_du_contrat_social }
-			owner = { has_valid_civic = civic_sparta_spirit }
-		}
-		is_being_purged = no
-		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		NOT = { has_trait = trait_nerve_stapled }
-		NOT = { has_trait = trait_zombie }
-		NOT = { has_trait = trait_fallen_god }
-		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
-		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-		if = {
-			limit = {
-				divinity_right_to_work_job_check_trigger_exempt = no
+can_fill_specialist_job_trigger = {
+	if = {
+		limit = {
+			has_global_flag = eci_educated
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_moth_chasing_flames
+					has_valid_civic = civic_ruthless_competition
+				}
 			}
-			divinity_right_to_work_job_check_trigger_specialist = yes
 		}
-		ethic_sparta_job_check_trigger = no
+		custom_tooltip = {
+			text = POP_EDUCATED_LOW
+			has_modifier = pop_highly_educated
+		}
+	}
+	else = {
+		custom_tooltip = SPECIALIST_JOB_TRIGGER
+		hidden_trigger = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+			exists = owner
+			OR = {
+				is_enslaved = no
+				has_slavery_type = { type = slavery_indentured }
+				owner = { has_valid_civic = civic_du_contrat_social }
+				owner = { has_valid_civic = civic_sparta_spirit }
+			}
+			is_being_purged = no
+			is_being_assimilated = no
+			NOT = { has_trait = trait_syncretic_proles }
+			NOT = { has_trait = trait_nerve_stapled }
+			NOT = { has_trait = trait_zombie }
+			NOT = { has_trait = trait_fallen_god }
+			OR = {
+				NOT = { has_trait = trait_mechanical }
+				AND = {
+					NOT = { has_trait = trait_thl_doll }
+					owner = {
+						has_technology = tech_droid_workers
+					}
+				}
+				AND = {
+					has_trait = trait_thl_doll
+					owner = {
+						has_technology = tech_automatic_dolls
+					}
+				}
+			}
+			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			if = {
+				limit = {
+					divinity_right_to_work_job_check_trigger_exempt = no
+				}
+				divinity_right_to_work_job_check_trigger_specialist = yes
+			}
+		}
 	}
 }
 
@@ -411,78 +506,21 @@ can_build_overlord_gaiaseeder_machine = {
 	}
 }
 
-is_primitive_society = {
-	has_civic = civic_primitive_worship
-}
-
-is_coalition_government = {
-	if = {
-		limit = {
-			OR = {
-				has_civic = civic_coalition_government
-				has_civic = civic_coalition_government_overlord
-			}
-		}
-		custom_tooltip = civic_tooltip_has_coalition_government
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "civic_tooltip_has_coalition_government"
-			always = no
-		}
-	}
-}
-is_valid_coalition_government = {
-	if = {
-		limit = {
-			OR = {
-				has_valid_civic = civic_coalition_government
-				has_valid_civic = civic_coalition_government_overlord
-			}
-		}
-		custom_tooltip = civic_tooltip_has_coalition_government
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "civic_tooltip_has_coalition_government"
-			always = no
-		}
-	}
-}
-
-is_memory_vault_empire = {
-	OR = {
-		has_civic = civic_forever_with_us
-		has_civic = civic_memory_vault
-		has_civic = civic_memory_vault_corporate
-		has_civic = civic_memory_vault_machine
-		has_civic = civic_memory_vault_hive
-	}
-}
-
 #低技术开局
 is_low_tech_start = {
 	OR = {
 		is_primitive = yes
-		is_primitive_society = yes
 		has_origin = origin_broken_shackles
 		has_origin = origin_payback
 		has_origin = origin_taking_care_of_god
 		has_origin = origin_galaxy_iron_curtain
+		has_origin = origin_sprout
 		has_civic = civic_eager_explorers
 		has_civic = civic_privatized_exploration
 		has_civic = civic_hive_stargazers
 		has_civic = civic_machine_exploration_protocol
-	}
-}
-
-is_eager_explorer_empire = {
-	OR = {
-		has_civic = civic_eager_explorers
-		has_civic = civic_privatized_exploration
-		has_civic = civic_hive_stargazers
-		has_civic = civic_machine_exploration_protocol
-		has_origin = origin_advanced_start
+		has_civic = civic_hifuu
+		has_origin = origin_wandering_planet
 	}
 }
 
@@ -496,31 +534,31 @@ is_relentless_industrialist_empire = {
 is_subterranean_empire = {
 	OR = {
 		has_origin = origin_subterranean
-		has_origin = origin_mining_machinery
+		has_origin = origin_subterranean_machines
 	}
 }
 
-is_catalytic_empire = {
+is_pleasure_seeker_empire = {
 	OR = {
-		has_valid_civic = civic_catalytic_processing
-		has_valid_civic = civic_corporate_catalytic_processing
-		has_valid_civic = civic_hive_catalytic_processing
-		has_valid_civic = civic_machine_catalytic_processing
+		has_valid_civic = civic_pleasure_seekers
+		has_valid_civic = civic_corporate_hedonism
+		has_valid_civic = civic_lord_of_feast
 	}
 }
 
-is_reanimator = {
+has_functional_civic = {
 	OR = {
-		has_valid_civic = civic_reanimated_armies
-		has_valid_civic = civic_permanent_employment
+		has_valid_civic = civic_functional_architecture
+		has_valid_civic = civic_master_engineer
+		has_valid_civic = civic_machine_builder
 	}
 }
 
-is_anglers_empire = {
+is_pleasure_seeker = {
 	OR = {
-		has_valid_civic = civic_anglers
-		has_valid_civic = civic_corporate_anglers
-		has_valid_civic = civic_anglers_socialism
+		has_valid_civic = civic_lord_of_feast
+		has_valid_civic = civic_pleasure_seekers
+		has_valid_civic = civic_corporate_hedonism
 	}
 }
 
@@ -555,9 +593,8 @@ has_encountered_other_species = {
 		has_origin = origin_syncretic_evolution
 		is_servitor_empire = yes
 		has_origin = origin_symbiotic_race
-		has_origin = origin_slave_race
 		num_communications > 0
-		any_owned_pop = {
+		any_owned_pop_group = {
 			NOT = {
 				has_trait = "trait_mechanical"
 			}
@@ -691,6 +728,7 @@ is_pacifist = {
 			OR = {
 				has_ethic = ethic_fanatic_pacifist
 				has_ethic = ethic_pacifist
+				has_ethic = ethic_defensivism
 			}
 		}
 		custom_tooltip = st_is_pacifist_any
@@ -708,6 +746,7 @@ is_militarist = {
 			OR = {
 				has_ethic = ethic_fanatic_militarist
 				has_ethic = ethic_militarist
+				has_ethic = ethic_defensivism
 			}
 		}
 		custom_tooltip = st_is_militarist_any
@@ -726,6 +765,7 @@ is_materialist = {
 			OR = {
 				has_ethic = ethic_fanatic_materialist
 				has_ethic = ethic_materialist
+				has_ethic = ethic_pragmatism
 			}
 		}
 		custom_tooltip = st_is_materialist_any
@@ -743,6 +783,7 @@ is_spiritualist = {
 			OR = {
 				has_ethic = ethic_fanatic_spiritualist
 				has_ethic = ethic_spiritualist
+				has_ethic = ethic_pragmatism
 			}
 		}
 		custom_tooltip = st_is_spiritualist_any
@@ -750,6 +791,80 @@ is_spiritualist = {
 	else = {
 		custom_tooltip = {
 			fail_text = "st_is_spiritualist_any"
+			always = no
+		}
+	}
+}
+
+is_egalitarian = {
+	if = {
+		limit = {
+			OR = {
+				has_ethic = ethic_fanatic_egalitarian
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_conciliationsm
+			}
+		}
+		custom_tooltip = st_is_egalitarian_any
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "st_is_egalitarian_any"
+			always = no
+		}
+	}
+}
+is_authoritarian = {
+	if = {
+		limit = {
+			OR = {
+				has_ethic = ethic_fanatic_authoritarian
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_conciliationsm
+			}
+		}
+		custom_tooltip = st_is_authoritarian_any
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "st_is_authoritarian_any"
+			always = no
+		}
+	}
+}
+
+is_xenophile = {
+	if = {
+		limit = {
+			OR = {
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_nationalism
+			}
+		}
+		custom_tooltip = st_is_xenophile_any
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "st_is_xenophile_any"
+			always = no
+		}
+	}
+}
+is_xenophobe = {
+	if = {
+		limit = {
+			OR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_nationalism
+			}
+		}
+		custom_tooltip = st_is_xenophobe_any
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "st_is_xenophobe_any"
 			always = no
 		}
 	}
@@ -778,6 +893,7 @@ is_authoritarian = {
 			OR = {
 				has_ethic = ethic_fanatic_authoritarian
 				has_ethic = ethic_authoritarian
+				has_valid_civic = civic_characteristic_socialism_pioneer
 			}
 		}
 		custom_tooltip = st_is_authoritarian_any
@@ -785,77 +901,6 @@ is_authoritarian = {
 	else = {
 		custom_tooltip = {
 			fail_text = "st_is_authoritarian_any"
-			always = no
-		}
-	}
-}
-
-is_xenophile = {
-	if = {
-		limit = {
-			OR = {
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_xenophile
-			}
-		}
-		custom_tooltip = st_is_xenophile_any
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "st_is_xenophile_any"
-			always = no
-		}
-	}
-}
-is_xenophobe = {
-	if = {
-		limit = {
-			OR = {
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_xenophobe
-			}
-		}
-		custom_tooltip = st_is_xenophobe_any
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "st_is_xenophobe_any"
-			always = no
-		}
-	}
-}
-
-is_socialism = {
-	if = {
-		limit = {
-			OR = {
-				has_ethic = ethic_fanatic_socialism
-				has_ethic = ethic_socialism
-			}
-		}
-		custom_tooltip = st_is_socialism_any
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "st_is_socialism_any"
-			always = no
-		}
-	}
-}
-is_capitalism = {
-	if = {
-		limit = {
-			OR = {
-				has_ethic = ethic_fanatic_capitalism
-				has_ethic = ethic_capitalism
-				has_valid_civic = civic_characteristic_socialism_pioneer
-			}
-		}
-		custom_tooltip = st_is_capitalism_any
-	}
-	else = {
-		custom_tooltip = {
-			fail_text = "st_is_capitalism_any"
 			always = no
 		}
 	}
@@ -871,8 +916,8 @@ has_any_ethic = {
 		has_ethic = ethic_spiritualist
 		has_ethic = ethic_militarist
 		has_ethic = ethic_pacifist
-		has_ethic = ethic_socialism
-		has_ethic = ethic_capitalism
+		has_ethic = ethic_egalitarian
+		has_ethic = ethic_authoritarian
 	}
 }
 
@@ -909,14 +954,14 @@ leader_has_empire_ethic = {
 		AND = {
 			has_ethic = ethic_materialist
 			owner = { is_materialist = yes }
+		}z
+		AND = {
+			has_ethic = ethic_egalitarian
+			owner = { is_egalitarian = yes }
 		}
 		AND = {
-			has_ethic = ethic_socialism
-			owner = { is_socialism = yes }
-		}
-		AND = {
-			has_ethic = ethic_capitalism
-			owner = { is_capitalism = yes }
+			has_ethic = ethic_authoritarian
+			owner = { is_authoritarian = yes }
 		}
 	}
 }
@@ -977,7 +1022,6 @@ can_build_branch_offices_trigger = {
 			}
 		}
 		#	GF
-		has_civic = civic_gk
 		has_civic = GF_civic_GK
 		#	azl
 		has_authority = auth_azur_lane_0
@@ -989,41 +1033,22 @@ can_build_branch_offices_trigger = {
 			exists = event_target:elizabeth_leader
 			has_country_flag = azur_lane_leader_elizabeth
 		}
-		#	多彩
-		has_authority = auth_brothel
+		#	精灵
+		is_ELF_can_build_branch_offices = yes
 		#	莉莉
 		has_authority = auth_AL_democratic
 		has_authority = auth_AL_arsenal
 		#	久远
 		KZ_VOY_can_build_branch_offices = yes
-		#	星海帝皇	=|义军同盟|
+		#	星海帝皇	|义军同盟|
 		is_country_type = rebel_allience
 		#	ARP
 		has_authority = auth_Arp_0
+		#	rmaid		|外派服务飞升|
+		Maid_trigger_0_can_build_branch_offices = yes
 
-		#_|Ecar|
-		AND = {
-			has_global_flag = ideological_revolution	# |Ecar激活|
-			OR = {
-				has_civic = civic_family_business
-				has_civic = civic_world_cooperative
-				has_valid_civic = civic_state_owned_enterprises
-				has_valid_civic = civic_corporate_dominion
-				has_valid_civic = civic_underworld_society
-				has_valid_civic = civic_merchant_guilds
-				has_valid_civic = civic_state_monopoly
-				has_valid_civic = civic_glory_and_dream
-				has_valid_civic = civic_machine_financial_investment
-				has_active_tradition = tr_future_economy_soc
-				AND = {
-					has_ethic = ethic_fanatic_capitalism
-					has_active_tradition = tr_future_economy
-				}
-			}
-		}
-
-		#	rmaid		=|外派服务飞升|
-		has_ascension_perk = ap_expactriate_service
+		#	ECI
+		has_valid_civic = civic_merchant_guilds
 	}
 }
 
@@ -1060,24 +1085,15 @@ can_support_branch_offices_trigger = {
 		# azlr
 		has_authority = auth_azur_dictatorial
 	}
-	##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/Ecar
+	##_|禁止_巨企| +AAR		/ETCPM/hiveDLC/MCA/驴岛/wsg		/GF/azl/SOFE	/ECI
 	OR = {
-		## 特殊允许|企业政府|	############
-		# AAR
+		##	特殊允许|企业政府|	############
+		#	AAR
 		is_subject_with_preset = { PRESET = AAR_SBJ_subsidiary }
-		# Ecar
-		AND = {
-			has_global_flag = ideological_revolution	# |Ecar激活|
-			OR = {
-				has_tradition = tr_future_economy
-				has_civic = civic_world_cooperative
-				has_valid_civic = civic_criminal_heritage
-				has_civic = civic_galactic_megacorp
-				has_civic = civic_galactic_sovereign
-				has_civic = civic_galactic_sovereign_megacorp
-				has_civic = civic_galactic_sovereign_people
-			}
-		}
+		#	ECI	|巨企|
+		has_global_flag = ideological_revolution	# |ECI激活|
+		#	rmaid
+		Maid_trigger_1_can_support_branch_offices = yes
 
 		## 禁止所有|企业政府|	############
 		NOR = {
@@ -1085,19 +1101,18 @@ can_support_branch_offices_trigger = {
 			has_civic = civic_galactic_sovereign_megacorp
 
 			#_|巨企国家|	ETCPM/hiveDLC/MCA/驴岛/wsg
-			# ETCPM
+			#	ETCPM
 			has_authority = auth_private
-			# hiveDLC
+			#	hiveDLC
 			has_valid_civic = civic_mutualistic_behavior
 			has_valid_civic = civic_machine_trading
-			# MCA
+			#	MCA
 			has_authority = auth_corporate_fiefdom
 			has_authority = auth_cooperative
-			# 驴岛
+			#	驴岛
 			has_civic = civic_business_union
-			# wsg
+			#	wsg
 			has_authority = auth_warshipgirls
-
 			AND = {
 				has_authority = auth_shenhai
 				OR = {
@@ -1105,24 +1120,88 @@ can_support_branch_offices_trigger = {
 					has_civic = civic_sh_criminal_syndicate
 				}
 			}
-			# GF
-			has_civic = civic_gk
+			#	GF
 			has_civic = GF_civic_GK
-			# azl
+			#	azl
 			has_authority = auth_azur_lane_1
-			# SOFE
+			#	SOFE
 			has_valid_civic = civic_sofe_inner_strength
 		}
 	}
 
-	##_|必要国家类型|	 +ZOFE
+	##_|必要国家类型|
+	is_gestalt = no
+}
+
+#是研究者岗位
+has_research_job = {
+	has_job_type = researcher
+	has_job_type = brain_drone
+	has_job_type = calculator
+	has_job_type = dimensional_portal_researcher
+	has_job_type = dimensional_portal_researcher_gestalt
+	has_job_type = space_time_anomaly_researcher
+	has_job_type = space_time_anomaly_researcher_gestalt
+	has_job_type = magician
+	has_job_type = legendary_mage
+	has_job_type = necromancer
+	has_job_type = xeno_zoo_keeper
+	has_job_type = head_researcher
+}
+
+#母星总督是科学家
+prefers_scientist_governors = {
 	OR = {
-		# vanilla
-		is_regular_empire = yes
-		# +ZOFE
-		AND = {
-			is_gestalt = no
-			is_country_type = ascended_empire
+		has_ethic = ethic_fanatic_materialist
+		has_valid_civic = civic_cyber_demos_cratos
+		has_valid_civic = civic_technocracy
+		has_valid_civic = civic_cyber_dictatorship
+	}
+}
+
+#母星总督是指挥官
+prefers_commander_governors = {
+	OR = {
+		has_valid_civic = civic_sparta_spirit
+		has_valid_civic = civic_barbaric_despoilers
+		has_valid_civic = civic_feudal_realm
+		has_valid_civic = civic_military_dictatorship
+		has_valid_civic = civic_citizen_service
+	}
+}
+
+#有义体飞升效果
+has_cybernetic_ascension = {
+	OR = {
+		has_ascension_perk = ap_the_flesh_is_weak						# Regular
+		has_ascension_perk = ap_organo_machine_interfacing				# Hive-Mind
+		has_ascension_perk = ap_organo_machine_interfacing_assimilator	# Driven Assimilator
+		has_origin = origin_cybernetic_creed							# Early Access Origin
+		has_origin = origin_metal_cornerstone
+		has_valid_civic = civic_augmentation_bazaars					# Restricted Civic
+	}
+}
+
+#管务员国家
+is_worker_coop_empire = {
+	OR = {
+		has_valid_civic = civic_world_cooperative
+		has_valid_civic = civic_worker_coop
+	}
+}
+
+
+#有灵飞效果的国家
+has_psionic_ascension = {
+	OR = {
+		has_ascension_perk = ap_mind_over_matter						# Regular
+		has_origin = origin_shroudwalker_apprentice						# Early Access Origin
+		has_origin = origin_endbringers
+		is_chosen_empire = yes											# Early Access Civic
+		AND  = {														# Early Access Origin (must complete situation from right side)
+			has_origin = origin_shroud_forged
+			has_country_flag = finish_shroud_forged_liberation_flag
 		}
+		has_civic = civic_xinshin_impact
 	}
 }

@@ -41,6 +41,10 @@ preset_scholarium_nice_01 = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -66,7 +70,7 @@ preset_scholarium_nice_01 = {
 	}
 
 	subject_weight = {
-		base = 125
+		base = 50
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -85,12 +89,8 @@ preset_scholarium_nice_01 = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			tech_unlocked_ratio = {
 				who = from
@@ -148,6 +148,10 @@ preset_scholarium_nice_02 = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -173,7 +177,7 @@ preset_scholarium_nice_02 = {
 	}
 
 	subject_weight = {
-		base = 150
+		base = 100
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -192,12 +196,8 @@ preset_scholarium_nice_02 = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			tech_unlocked_ratio = {
 				who = from
@@ -251,6 +251,10 @@ preset_scholarium_mean_01 = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -276,7 +280,7 @@ preset_scholarium_mean_01 = {
 	}
 
 	subject_weight = {
-		base = 75
+		base = -100
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -295,12 +299,8 @@ preset_scholarium_mean_01 = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			tech_unlocked_ratio = {
 				who = from
@@ -354,6 +354,10 @@ preset_scholarium_mean_02 = {
 				key = subject_loyalty
 				value = subject_loyalty_effects
 			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
 		}
 	}
 
@@ -379,7 +383,7 @@ preset_scholarium_mean_02 = {
 	}
 
 	subject_weight = {
-		base = 50
+		base = -250
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -398,12 +402,8 @@ preset_scholarium_mean_02 = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			tech_unlocked_ratio = {
 				who = from
@@ -482,7 +482,7 @@ preset_scholarium_mean_03 = {
 	}
 
 	subject_weight = {
-		base = 0
+		base = -500
 		modifier = {
 			add = @specialist_aligned_ethics_value
 			is_materialist = yes
@@ -491,7 +491,6 @@ preset_scholarium_mean_03 = {
 			add = @specialist_unaligned_ethics_value
 			is_spiritualist = yes
 		}
-
 	}
 
 	potential = {
@@ -501,12 +500,8 @@ preset_scholarium_mean_03 = {
 			FROM = { has_civic = civic_inwards_perfection }
 		}
 		OR = {
-			from = {
-				OR = {
-					has_origin = origin_imperial_vassal_overlord
-					has_origin = origin_red_satellite_overlord
-				}
-			}
+			FROM = { has_origin = origin_imperial_vassal_overlord }
+			FROM = { has_origin = origin_red_satellite_overlord }
 			is_specialist_subject_type = { TYPE = scholarium }
 			tech_unlocked_ratio = {
 				who = from

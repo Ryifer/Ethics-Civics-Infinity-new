@@ -24,22 +24,16 @@ utility_component_template = {
 		}
 	}
 
-	ftl = yes
+	ftl = no
 	jumpdrive = yes
 	ship_modifier = {
 		ship_ftl_jumpdrive_range_mult = -0.6
-		ship_windup_mult = 35
-	}
-	triggered_ship_modifier = {
-		potential = { owner = { is_ai = yes } }
-		ship_windup_mult = -35
 	}
 	prerequisites = { "tech_subspace_drive" }
 	ai_weight = {
 		weight = 0.1
 	}
 	component_set = "ftl_components"
-	upgrades_to = "WARP_DRIVE_1"
 	upgrades_to = "HYPER_DRIVE_1"
 }
 
@@ -64,9 +58,8 @@ utility_component_template = {
 	}
 	prerequisites = { "tech_sublight_drive" }
 	ai_weight = {
-		weight = 0.1
+		weight = 0
 	}
 	component_set = "ftl_components"
 	upgrades_to = "HYPER_DRIVE_1"
-	upgrades_to = "WARP_DRIVE_1"
 }

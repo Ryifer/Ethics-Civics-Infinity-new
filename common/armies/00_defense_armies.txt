@@ -35,24 +35,10 @@ defense_army = {
 		}
 		produces = {
 			trigger = {
-				NOT = { from = { has_trait = trait_lithoid } }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
+				has_councilor = { COUNCILOR = "councilor_army_production_corporate" }
 			}
-			unity = 0.5
-			energy = 2
-			minerals = 2
-			food = 2
-		}
-		produces = {
-			trigger = {
-				from = { has_trait = trait_lithoid }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 4
+			unity = 0.1
+			mult = value:councilor_level|TYPE|councilor_army_production_corporate|
 		}
 	}
 
@@ -120,24 +106,17 @@ undead_defense_army = {
 		}
 		produces = {
 			trigger = {
-				NOT = { from = { has_trait = trait_lithoid } }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
+				has_councilor = { COUNCILOR = "councilor_army_production" }
 			}
-			unity = 0.5
-			energy = 2
-			minerals = 2
-			food = 2
+			unity = 0.1
+			mult = value:councilor_level|TYPE|councilor_army_production|
 		}
 		produces = {
 			trigger = {
-				from = { has_trait = trait_lithoid }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
+				has_councilor = { COUNCILOR = "councilor_army_production_corporate" }
 			}
-			unity = 0.5
-			energy = 2
-			minerals = 4
+			unity = 0.1
+			mult = value:councilor_level|TYPE|councilor_army_production_corporate|
 		}
 	}
 
@@ -161,7 +140,10 @@ robotic_defense_army = {
 
 	potential = {
 		from = {
-			has_trait = "trait_mechanical"
+			OR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+			}
 		}
 		owner = {
 			NOT = { has_authority = auth_machine_intelligence }
@@ -186,24 +168,10 @@ robotic_defense_army = {
 		}
 		produces = {
 			trigger = {
-				NOT = { from = { has_trait = trait_lithoid } }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
+				has_councilor = { COUNCILOR = "councilor_army_production_corporate" }
 			}
-			unity = 0.5
-			energy = 2
-			minerals = 2
-			food = 2
-		}
-		produces = {
-			trigger = {
-				from = { has_trait = trait_lithoid }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 4
+			unity = 0.1
+			mult = value:councilor_level|TYPE|councilor_army_production_corporate|
 		}
 	}
 
@@ -240,27 +208,6 @@ machine_defense = {
 				owner = { has_active_tradition = tr_unyielding_resistance_is_frugal }
 			}
 			unity = 0.5
-		}
-		produces = {
-			trigger = {
-				NOT = { from = { has_trait = trait_lithoid } }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 2
-			food = 2
-		}
-		produces = {
-			trigger = {
-				from = { has_trait = trait_lithoid }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 4
 		}
 	}
 }
@@ -311,49 +258,5 @@ offspring_defense = {
 			}
 			unity = 0.5
 		}
-		produces = {
-			trigger = {
-				NOT = { from = { has_trait = trait_lithoid } }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 2
-			food = 2
-		}
-		produces = {
-			trigger = {
-				from = { has_trait = trait_lithoid }
-				exists = owner
-				owner = { has_valid_civic = civic_martial_brotherhood }
-			}
-			unity = 0.5
-			energy = 2
-			minerals = 4
-		}
-	}
-}
-
-drone_defense_army = {
-	defensive = yes
-	is_pop_spawned = yes
-	damage = 0.4
-	health = 0.5
-	morale = 0.8
-	has_morale = no
-	war_exhaustion = 0.0
-	icon = GFX_army_type_primitive
-	use_armynames_from = offspring_defense
-
-	potential = {
-		from = {
-			NOR = {
-				has_job = warrior_drone
-				has_job = patrol_drone
-				has_job = offspring_drone
-			}
-		}
-		owner = { has_policy_flag = all_people_are_soldiers_ges }
 	}
 }

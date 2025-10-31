@@ -23,15 +23,15 @@ default = {
 	city_graphical_culture = "mammalian_01"
 
 	empire_flag = {
-		icon = {
+		icon= {
 			category = "pointy"
 			file = "flag_pointy_2.dds"
 		}
-		background = {
+		background= {
 			category = "backgrounds"
 			file = "v.dds"
 		}
-		colors = {
+		colors={
 			"red"
 			"black"
 			"null"
@@ -46,6 +46,6 @@ default = {
 		texture = 0
 		attachment = 0
 		clothes = 4
-		leader_class = governor
+		leader_class = official
 	}
 }

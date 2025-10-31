@@ -1,0 +1,63 @@
+# 共产主义战斗智能
+gov_machine_liberator = {
+    ruler_title = RT_CORE
+    should_force_rename = yes
+    possible = {
+        OR = {
+            AND = {
+                has_authority = auth_machine_intelligence
+                has_civic = civic_machine_liberator
+            }
+            AND = {
+                has_valid_civic = civic_revolutionary_terrorism
+                has_tradition = tr_virtuality_finish
+            }
+        }
+    }
+    weight = {
+        base = @gov_authority_swap_weight
+        modifier = {
+            add = 9989999
+            has_authority = auth_machine_intelligence
+            has_civic = civic_machine_liberator
+        }
+    }
+}
+
+# 金融投资网络
+gov_machine_financial_investment = {
+    ruler_title = RT_ULTIMATE_CAPITALIST
+    should_force_rename = yes
+    possible = {
+        has_authority = auth_machine_intelligence
+        has_civic = civic_machine_financial_investment
+    }
+    weight = {
+        base = 9999999
+    }
+}
+
+# 后资本主义
+gov_hive_capital_creates_gods = {
+    ruler_title = RT_ULTIMATE_CAPITALIST
+    should_force_rename = yes
+    possible = {
+        has_authority = auth_hive_mind
+        has_civic = civic_hive_capital_creates_gods
+    }
+    weight = {
+        base = 9999999
+    }
+}
+
+
+
+########## 删掉的 ##########
+gov_storm_chasers = {
+    ruler_title = RT_ELDER_SPEAKER
+    ruler_title_female = RT_ELDER_SPEAKER_FEMALE
+    possible = { always = no }
+    weight = {
+        base = 0
+    }
+}

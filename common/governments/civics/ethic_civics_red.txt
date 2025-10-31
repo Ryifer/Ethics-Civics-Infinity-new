@@ -1,510 +1,7 @@
 ################
 #  超主题民政
 ################
-#无政府主义（红标）
-civic_anarchism = {
-	description = civic_tooltip_anarchism_effects
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-		authority = {
-			NOT = {
-				value = auth_corporate
-			}
-		}
-		civics = {
-			NOR = {
-				value = civic_galactic_sovereign_megacorp
-				value = civic_family_business
-				value = civic_world_cooperative
-			}
-		}
-	}
-	possible = {
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_theme_civic
-				value = civic_network_of_the_mind
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-			}
-			NOR = {
-				text = civic_tooltip_not_subtopic_civic
-				value = civic_aristocratic_elite
-				value = civic_coalition_government
-				value = civic_stratocracy
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-				value = civic_exalted_priesthood
-				value = civic_merchant_guilds
-				value = civic_peoples_republic
-				value = civic_glorious_pioneer
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_egalitarian
-		}
-		authority = {
-			value = auth_direct_democratic
-		}
-	}
-	modifier = {
-		empire_size_penalty_mult = -2
-		local_trade_protection_add = -10
-		pop_factions_unity_produces_add = -0.25
-		country_edict_fund_mult = -1
-		country_naval_coverage_mult = -0.9
-		pop_ethic_egalitarian_attraction_mult = 0.25
-	}
-	random_weight = {
-		base = 75
-		modifier = {
-			factor = 0
-			has_origin = origin_void_dwellers
-		}
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
-		modifier = {
-			factor = 10
-			has_ascension_perk = ap_anarchy_utopia
-		}
-	}
-}
-
-#意识之海（红标）
-civic_network_of_the_mind = {
-	modification = no
-	description = civic_tooltip_network_of_the_mind_effects
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-		authority = {
-			NOT = {
-				value = auth_corporate
-			}
-		}
-		civics = {
-			NOR = {
-				value = civic_galactic_sovereign_megacorp
-				value = civic_family_business
-				value = civic_world_cooperative
-			}
-		}
-	}
-	possible = {
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_theme_civic_and_culture
-				value = civic_anarchism
-				value = civic_sparta_spirit
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-				value = civic_forever_with_us
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-
-				value = civic_aristocratic_elite
-				value = civic_coalition_government
-				value = civic_stratocracy
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-				value = civic_exalted_priesthood
-				value = civic_merchant_guilds
-				value = civic_peoples_republic
-				value = civic_glorious_pioneer
-				
-				value = civic_machine_soul_servant
-				value = civic_death_cult
-				value = civic_knowledge_seeker
-				value = civic_Fertility_worship
-				value = civic_The_Druid_Way
-				value = civic_keepers_harmony
-				value = civic_spiritual_seekers
-				value = civic_crusader_spirit
-				value = civic_eternal_jihad
-				value = civic_liberation_theology
-				value = civic_procrastination
-				value = civic_industry_pacesetter
-				value = civic_reeducated_labor
-				value = civic_eager_explorers
-				value = civic_peacekeepers
-				value = civic_exploration
-				value = civic_star_settlers
-				value = civic_memorialist
-				value = civic_globalism
-				value = civic_xeno_militarist
-				value = civic_liberator
-				value = civic_inwards_perfection
-				value = civic_warrior_culture
-				value = civic_liberty_of_libido
-				value = civic_libido_equipment
-				value = civic_consumerism
-				value = civic_super_fast_paced_life
-				value = civic_terraforming
-				value = civic_catalytic_processing
-				value = civic_crafters
-				value = civic_idyllic_bloom
-				value = civic_conciliatory
-				value = civic_ultravisionary_socialism
-				value = civic_civil_rights_gun_grant
-				value = civic_futuristic_art
-				value = civic_proletarian_culture
-				value = civic_commercial_entertainment
-				value = civic_anglers
-				value = civic_vilified
-				value = civic_cultural_thief
-				value = civic_art_country
-				value = civic_ideal_slavery
-				value = civic_curse_of_blood_kin
-				value = civic_zhaowen_dao
-				value = civic_scavengers
-			}
-			NOT = {
-				value = civic_slaver_guilds
-			}
-		}
-		origin = {
-			NOT = {
-				value = uo_origin_une_member
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_authoritarian
-			NOR = {
-				text = civic_tooltip_not_capitalism
-				value = ethic_capitalism
-				value = ethic_fanatic_capitalism
-			}
-		}
-	}
-	modifier = {
-		country_war_exhaustion_mult = -0.25
-		country_base_influence_produces_add = 1
-		country_unity_produces_mult = 0.15
-		intel_encryption_add = 1
-		country_subject_acceptance_add = -50
-		first_contact_speed_mult = -0.25
-		country_trade_fee = 1
-		country_resource_max_add = 15000
-	}
-	traits = {
-		trait = trait_psionic_link
-	}
-	random_weight = {
-		base = 75
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
-	}
-}
-
-#意识之海（智械版）
-civic_network_of_the_mind_machine = {
-	modification = no
-	icon = "gfx/interface/icons/governments/civics/civic_network_of_the_mind.dds"
-	description = civic_tooltip_network_of_the_mind_effects
-	potential = {
-		civics = {
-			value = civic_network_of_the_mind_machine
-		}
-	}
-	possible = {
-		civics = {
-			OR = {
-				text = civic_tooltip_not_theme_civic_and_culture
-				value = civic_network_of_the_mind_machine
-				value = civic_anarchism
-				value = civic_sparta_spirit
-				value = civic_network_of_the_mind_true_hive
-				value = civic_forever_with_us
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-
-				value = civic_aristocratic_elite
-				value = civic_coalition_government
-				value = civic_stratocracy
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-				value = civic_exalted_priesthood
-				value = civic_merchant_guilds
-				value = civic_peoples_republic
-				value = civic_glorious_pioneer
-
-				value = civic_machine_soul_servant
-				value = civic_death_cult
-				value = civic_knowledge_seeker
-				value = civic_Fertility_worship
-				value = civic_The_Druid_Way
-				value = civic_keepers_harmony
-				value = civic_spiritual_seekers
-				value = civic_crusader_spirit
-				value = civic_eternal_jihad
-				value = civic_liberation_theology
-				value = civic_procrastination
-				value = civic_industry_pacesetter
-				value = civic_reeducated_labor
-				value = civic_eager_explorers
-				value = civic_peacekeepers
-				value = civic_exploration
-				value = civic_star_settlers
-				value = civic_memorialist
-				value = civic_globalism
-				value = civic_xeno_militarist
-				value = civic_liberator
-				value = civic_inwards_perfection
-				value = civic_warrior_culture
-				value = civic_liberty_of_libido
-				value = civic_libido_equipment
-				value = civic_consumerism
-				value = civic_super_fast_paced_life
-				value = civic_terraforming
-				value = civic_catalytic_processing
-				value = civic_crafters
-				value = civic_idyllic_bloom
-				value = civic_conciliatory
-				value = civic_ultravisionary_socialism
-				value = civic_civil_rights_gun_grant
-				value = civic_futuristic_art
-				value = civic_proletarian_culture
-				value = civic_commercial_entertainment
-				value = civic_anglers
-				value = civic_vilified
-				value = civic_cultural_thief
-				value = civic_art_country
-				value = civic_ideal_slavery
-				value = civic_curse_of_blood_kin
-				value = civic_zhaowen_dao
-				value = civic_scavengers
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_authoritarian
-			NOR = {
-				text = civic_tooltip_not_capitalism
-				value = ethic_capitalism
-				value = ethic_fanatic_capitalism
-			}
-		}
-	}
-	modifier = {
-		country_war_exhaustion_mult = -0.5
-		country_base_influence_produces_add = 2
-		country_unity_produces_mult = 0.25
-		intel_encryption_add = 2
-		country_subject_acceptance_add = -100
-		first_contact_speed_mult = -0.5
-		country_government_civic_points_add = 1
-		country_trade_fee = 10
-		country_resource_max_add = 15000
-	}
-}
-
-#意识之海（蜂群版）
-civic_network_of_the_mind_true_hive = {
-	modification = no
-	icon = "gfx/interface/icons/governments/civics/civic_network_of_the_mind.dds"
-	description = civic_tooltip_network_of_the_mind_effects
-	potential = {
-		civics = {
-			value = civic_network_of_the_mind_true_hive
-		}
-	}
-	possible = {
-		civics = {
-			OR = {
-				text = civic_tooltip_not_theme_civic_and_culture
-				value = civic_network_of_the_mind_true_hive
-				value = civic_anarchism
-				value = civic_sparta_spirit
-				value = civic_network_of_the_mind_machine
-				value = civic_forever_with_us
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-
-				value = civic_aristocratic_elite
-				value = civic_coalition_government
-				value = civic_stratocracy
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-				value = civic_exalted_priesthood
-				value = civic_merchant_guilds
-				value = civic_peoples_republic
-				value = civic_glorious_pioneer
-
-				value = civic_machine_soul_servant
-				value = civic_death_cult
-				value = civic_knowledge_seeker
-				value = civic_Fertility_worship
-				value = civic_The_Druid_Way
-				value = civic_keepers_harmony
-				value = civic_spiritual_seekers
-				value = civic_crusader_spirit
-				value = civic_eternal_jihad
-				value = civic_liberation_theology
-				value = civic_procrastination
-				value = civic_industry_pacesetter
-				value = civic_reeducated_labor
-				value = civic_eager_explorers
-				value = civic_peacekeepers
-				value = civic_exploration
-				value = civic_star_settlers
-				value = civic_memorialist
-				value = civic_globalism
-				value = civic_xeno_militarist
-				value = civic_liberator
-				value = civic_inwards_perfection
-				value = civic_warrior_culture
-				value = civic_liberty_of_libido
-				value = civic_libido_equipment
-				value = civic_consumerism
-				value = civic_super_fast_paced_life
-				value = civic_terraforming
-				value = civic_catalytic_processing
-				value = civic_crafters
-				value = civic_idyllic_bloom
-				value = civic_conciliatory
-				value = civic_ultravisionary_socialism
-				value = civic_civil_rights_gun_grant
-				value = civic_futuristic_art
-				value = civic_proletarian_culture
-				value = civic_commercial_entertainment
-				value = civic_anglers
-				value = civic_vilified
-				value = civic_cultural_thief
-				value = civic_art_country
-				value = civic_ideal_slavery
-				value = civic_curse_of_blood_kin
-				value = civic_zhaowen_dao
-				value = civic_scavengers
-				value = civic_divine_order
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_authoritarian
-			NOR = {
-				text = civic_tooltip_not_capitalism
-				value = ethic_capitalism
-				value = ethic_fanatic_capitalism
-			}
-		}
-	}
-	modifier = {
-		country_war_exhaustion_mult = -0.5
-		country_base_influence_produces_add = 2
-		country_unity_produces_mult = 0.25
-		intel_encryption_add = 2
-		country_subject_acceptance_add = -100
-		first_contact_speed_mult = -0.5
-		country_government_civic_points_add = 1
-		country_trade_fee = 10
-		country_resource_max_add = 15000
-	}
-}
-
-#狂心肃清者（红标）
+#种族洁癖（红标）
 civic_fanatic_purifiers = {
 	playable = {
 		host_has_dlc = "Utopia"
@@ -540,11 +37,11 @@ civic_fanatic_purifiers = {
 			}
 		}
 	}
-	random_weight = {
+	ai_weight = {
 		base = 5
 		modifier = {
 			factor = 10
-			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_militarist
 		}
 		modifier = {
 			factor = 0
@@ -561,12 +58,80 @@ civic_fanatic_purifiers = {
 		pop_ethic_xenophobe_attraction_mult = 1
 		pop_ethic_militarist_attraction_mult = 1
 		country_starbase_influence_cost_mult = -0.2
+		the_composer_of_strands_attunement_mult = 1
 	}
 }
 
-#利他主义（红标）
+#内圣之道（红标）
+civic_inwards_perfection = {
+	modification = {
+		add = {
+			has_tradition = tr_future_finish
+			has_technology = tech_ascension_theory
+		}
+		remove = {
+			has_tradition = tr_future_finish
+			has_technology = tech_ascension_theory
+		}
+	}
+	description = civic_tooltip_inwards_perfection_effects
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		civics = {
+			NOR = {
+				text = civic_tooltip_not_eager_explorers
+				value = civic_eager_explorers
+				value = civic_privatized_exploration
+				value = civic_hive_stargazers
+				value = civic_machine_exploration_protocol
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 10
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				host_has_dlc = "Utopia"
+			}
+		}
+	}
+	modifier = {
+		planet_miners_minor_artifacts_produces_add = 0.25
+		founder_species_growth_mult = 0.3
+		ship_home_territory_fire_rate_mult = 0.25
+		planet_stability_add = 15
+		country_hostile_claim_influence_cost_mult = 10
+		country_subject_acceptance_add = 20
+		pop_government_ethic_attraction = 0.25
+		envoys_add = -2
+		science_ship_survey_speed = -0.99
+		ship_science_speed_mult = -0.66
+		ship_anomaly_research_speed_mult = -0.33
+		the_cradle_of_souls_attunement_mult = 1
+	}
+}
+
+#灯塔渴求（红标）
 civic_altruism = {
-	modification = no
 	playable = {
 		host_has_dlc = "Utopia"
 	}
@@ -581,15 +146,6 @@ civic_altruism = {
 	possible = {
 		ethics = {
 			value = ethic_fanatic_xenophile
-			OR = {
-				value = ethic_fanatic_pacifist
-				value = ethic_fanatic_spiritualist
-			}
-			NOR = {
-				text = civic_tooltip_not_capitalism
-				value = ethic_capitalism
-				value = ethic_fanatic_capitalism
-			}
 		}
 		civics = {
 			NOR = {
@@ -598,68 +154,18 @@ civic_altruism = {
 			}
 		}
 	}
-	random_weight = {
-		base = 75
+	ai_weight = {
+		base = 5
 		modifier = {
-			factor = 0
-			NOT = {
-				host_has_dlc = "Utopia"
-			}
+			factor = 10
+			has_ethic = ethic_egalitarian
 		}
 	}
 	modifier = {
 		diplomacy_upkeep_mult = -1
-		diplo_weight_mult = 2.5
-		country_trust_cap_add = 1000
-		country_trust_growth = 1
-		country_power_projection_influence_produces_mult = -1
-		max_rivalries = -250
-		planet_pops_unemployed_consumer_goods_upkeep_add = 1
-		pop_ethic_xenophile_attraction_mult = 0.25
-	}
-}
-
-#三倍利润（红标）
-civic_triple_the_profit = {
-	description = civic_tooltip_triple_the_profit_effects
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-	}
-	possible = {
-		ethics = {
-			value = ethic_fanatic_capitalism
-			NOT = { value = ethic_fanatic_pacifist }
-		}
-	}
-
-	modifier = {
-		trade_value_mult = 3
-		pop_cat_ruler_happiness = 3
-		pop_cat_slave_happiness = -3
-		pop_category_rulers_consumer_goods_upkeep_add = 3
-		pop_growth_speed_reduction = 0.33
-		planet_jobs_slave_produces_mult = 0.5
-	}
-
-	random_weight = {
-		base = 5
-		modifier = {
-			factor = 10
-			has_ethic = ethic_fanatic_authoritarian
-		}
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
+		commercial_pact_mult = -0.95
+		planet_pops_unity_upkeep_mult = 1
+		the_instrument_of_desire_attunement_mult = 1
 	}
 }
 
@@ -675,72 +181,31 @@ civic_du_contrat_social = {
 	}
 	possible = {
 		ethics = {
-			NOR = {
-				value = ethic_fanatic_egalitarian
-				value = ethic_fanatic_socialism
-				value = ethic_fanatic_authoritarian
-				value = ethic_fanatic_capitalism
-			}
+			value = ethic_fanatic_egalitarian
 		}
-		authority = { value = auth_direct_democratic }
 	}
 
 	modifier = {
 		country_pop_enslaved_mult = 1
 		pop_cat_slave_happiness = 0.2
+		pop_category_slave_trade_produces_add = 1
 		pop_category_slave_consumer_goods_upkeep_add = 0.4
+		the_composer_of_strands_attunement_mult = 1
 	}
 
-	random_weight = {
-		base = 5
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
+	leader_background_job_weight = {
+		"labour_hero" = 99999
 	}
-}
 
-#永远同在（红标）
-civic_forever_with_us = {
-	modification = no
-	description = civic_tooltip_forever_with_us_effects
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-	}
-	possible = {
-		origin = {
-			NOT = { value = origin_overtuned }
-		}
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_network_of_the_mind
-				value = civic_network_of_the_mind
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-			}
-			NOR = {
-				value = civic_memory_vault
-				value = civic_memory_vault_corporate
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_materialist
-		}
-	}
-	random_weight = {
+	ai_weight = {
 		base = 5
 		modifier = {
 			factor = 10
-			has_civic = civic_ultravisionary_socialism
+			has_ethic = ethic_spiritualist
+		}
+		modifier = {
+			factor = 10
+			has_valid_civic = civic_ideal_slavery
 		}
 		modifier = {
 			factor = 0
@@ -752,19 +217,11 @@ civic_forever_with_us = {
 			}
 		}
 	}
-	modifier = {
-		leader_age = 1000
-		councilor_skill_add = 2
-		species_leader_exp_gain = 0.5
-		scientist_exp_gain = 0.25
-		leaders_upkeep_mult = -0.75
-		leaders_cost_mult = 0.75
-	}
 }
 
-#伟大军国（红标）
-civic_sparta_spirit = {
-	description = civic_tooltip_civic_sparta_spirit_effects
+#三倍利润（红标）
+civic_triple_the_profit = {
+	description = civic_tooltip_triple_the_profit_effects
 	potential = {
 		ethics = {
 			NOT = {
@@ -774,26 +231,22 @@ civic_sparta_spirit = {
 	}
 	possible = {
 		ethics = {
-			value = ethic_fanatic_militarist
-		}
-		civics = {
-			NOR = {
-				value = civic_warrior_culture
-				value = civic_private_militaries
-				value = civic_du_contrat_social
-			}
+			value = ethic_fanatic_authoritarian
 		}
 	}
 
 	modifier = {
-		army_starting_experience_add = 10000
-		ship_starting_experience_add = 10000
-		country_war_exhaustion_mult = -0.75
-		pop_demotion_time_mult = -1
-		pop_ethic_militarist_attraction_mult = 1
+		pop_cat_slave_bonus_workforce_mult = 3
+		pop_category_slave_trade_produces_add = 3
+		planet_pops_trade_produces_mult = 3
+		pop_cat_ruler_happiness = 3
+		pop_cat_slave_happiness = -3
+		pop_category_rulers_consumer_goods_upkeep_add = 3
+		pop_decline_speed = 0.33
+		the_instrument_of_desire_attunement_mult = 1
 	}
 
-	random_weight = {
+	ai_weight = {
 		base = 5
 		modifier = {
 			factor = 10
@@ -811,10 +264,20 @@ civic_sparta_spirit = {
 	}
 }
 
-#先验共产主义（红标）
-civic_transcendental_communism = {
-	modification = no
-	description = civic_tooltip_transcendental_communism_effects
+#大撕裂（红标）
+civic_atomic_society = {
+	description = civic_tooltip_atomic_society_effects
+	swap_type = {
+		name = civic_atomic_society
+		description = "civic_tooltip_atomic_society_effects"
+		trigger = {
+			exists = owner
+			owner = { has_country_flag = breached_shroud }
+		}
+		modifier = {
+			the_eater_of_worlds_attunement_mult = 1
+		}
+	}
 	potential = {
 		ethics = {
 			NOT = {
@@ -823,79 +286,145 @@ civic_transcendental_communism = {
 		}
 	}
 	possible = {
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_theme_civic
-				value = civic_network_of_the_mind
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-			}
-			NOR = {
-				text = civic_tooltip_not_subtopic_civic
-				value = civic_aristocratic_elite
-				value = civic_coalition_government
-				value = civic_stratocracy
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-				value = civic_exalted_priesthood
-				value = civic_merchant_guilds
-				value = civic_peoples_republic
-				value = civic_glorious_pioneer
-			}
-		}
-		origin = {
-			NOT = {
-				value = origin_red_satellite
-			}
-		}
 		ethics = {
-			value = ethic_fanatic_socialism
+			value = ethic_fanatic_materialist
+		}
+	}
+	ai_weight = {
+		base = 0.1
+		modifier = {
+			factor = 10
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 0
+			has_civic = civic_empty_vagrant
+			NOR = {
+				has_origin = origin_ev_both_choosen
+				has_civic = civic_ev_planet_and_fleet
+				has_ascension_perk = ev_land_planets
+			}
+		}
+	}
+}
+
+#超凡入圣（红标）
+civic_transcendence = {
+	modification = no
+	description = "civic_tooltip_transcendence_effects"
+	swap_type = {
+		name = civic_transcendence
+		description = "civic_tooltip_transcendence_breached_shroud_effects"
+		trigger = {
+			exists = owner
+			owner = { has_country_flag = breached_shroud }
+		}
+		modifier = {
+			whisperers_in_the_void_attunement_mult = 1
+		}
+	}
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_spiritualist
+		}
+	}
+	hide_modifiers = yes
+	modifier = {
+		num_tech_alternatives_add = -999
+		all_technology_research_speed = 0.1
+		planet_researchers_unity_produces_add = 6
+	}
+	ai_weight = {
+		base = 5
+		modifier = {
+			factor = 10
+			has_ethic = ethic_fanatic_spiritualist
+		}
+	}
+}
+
+#拥国之军（红标）
+civic_having_a_national_army = {
+	description = civic_tooltip_having_a_national_army_effects
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_militarist
+		}
+	}
+
+	modifier = {
+		job_soldier_per_pop = 0.03
+		armies_trade_produces_add = 0.1
+		country_war_exhaustion_mult = -0.75
+		ships_trade_upkeep_mult = 2
+		planet_jobs_alloys_produces_mult = -0.1
+		the_eater_of_worlds_attunement_mult = 1
+	}
+
+	ai_weight = {
+		base = 5
+		modifier = {
+			factor = 10
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 10
+			has_civic = civic_empty_vagrant
+		}
+	}
+	leader_background_job_weight = {
+		conscript_uncapped = 100
+	}
+}
+
+#先验乌托邦（红标）
+civic_transcendental_utopia = {
+	modification = no
+	description = civic_tooltip_transcendental_utopia_effects
+	potential = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+	possible = {
+		ethics = {
 			value = ethic_fanatic_pacifist
 		}
-		authority = {
-			OR = {
-				value = auth_direct_democratic
-				value = auth_democratic
+		species_archetype = {
+			NOR = {
+				text = TRIGGER_NOT_HAS_SPECIES_ARCHETYPE_ROBOT
+				value = MACHINE
+				value = ROBOT
 			}
 		}
 	}
 	modifier = {
-		empire_size_penalty_mult = -1
-		planet_amenities_mult = 0.15
+		pop_decline_speed = -0.15
 		pop_demotion_time_mult = -1
-		job_labour_hero_per_pop = 0.04
-		pop_government_ethic_attraction = 1
 		planet_pops_unemployed_consumer_goods_upkeep_add = 1
-		planet_jobs_society_research_produces_mult = -0.1
+		the_cradle_of_souls_attunement_mult = 1
 	}
 	traits = {
 		trait = trait_social_pheromones
 	}
-	random_weight = {
-		base = 60
+	ai_weight = {
+		base = 5
 		modifier = {
 			factor = 10
 			has_ethic = ethic_egalitarian
@@ -912,193 +441,21 @@ civic_transcendental_communism = {
 	}
 }
 
-#侠肝义胆（红标）
-civic_barbaric_despoilers = {
-	description = civic_tooltip_barbaric_despoilers_effects
-	swap_type = {
-		description = "civic_tooltip_barbaric_despoilers_effects"
-		trigger = {
-			host_has_dlc = "Overlord"
-		}
-		modifier = {
-			country_enclave_capacity_add = 1
-		}
-	}
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-		authority = {
-			NOT = {
-				value = auth_corporate
-			}
-		}
-		civics = {
-			NOR = {
-				value = civic_galactic_sovereign_megacorp
-				value = civic_family_business
-				value = civic_world_cooperative
-			}
-		}
-	}
-	possible = {
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_theme_civic
-				value = civic_network_of_the_mind
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-			}
-		}
-		origin = {
-			NOR = {
-				value = origin_common_ground
-				value = origin_hegemon
-				value = origin_red_satellite
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_socialism
-			value = ethic_fanatic_militarist
-		}
-	}
-	modifier = {
-		pop_cat_criminal_political_power = 4
-		pop_cat_criminal_happiness = 0.15
-		pop_demotion_time_mult = -1
-		job_criminal_per_pop = 0.04
-		trade_value_mult = -0.25
-		local_trade_protection_add = -10
-		pop_ethic_egalitarian_attraction_mult = 0.15
-		pop_ethic_socialism_attraction_mult = 0.25
-	}
-	random_weight = {
-		base = 60
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
-	}
-}
-
-#原始密教（红标）
-civic_primitive_worship = {
-	description = "civic_tooltip_primitive_worship_effects"
-	potential = {
-		ethics = {
-			NOT = {
-				value = ethic_gestalt_consciousness
-			}
-		}
-		authority = {
-			NOT = {
-				value = auth_corporate
-			}
-		}
-		civics = {
-			NOR = {
-				value = civic_galactic_sovereign_megacorp
-				value = civic_family_business
-				value = civic_world_cooperative
-			}
-		}
-	}
-	possible = {
-		civics = {
-			NOR = {
-				text = civic_tooltip_not_theme_civic
-				value = civic_network_of_the_mind
-				value = civic_network_of_the_mind_machine
-				value = civic_network_of_the_mind_true_hive
-				value = civic_feudal_realm
-				value = civic_eternal_kingship
-				value = civic_sovereign_federation
-				value = civic_constitutional_parliament
-				value = civic_shared_burden
-				value = civic_socialistic
-				value = civic_nazbol
-				value = civic_ultimate_collective
-				value = civic_glory_and_dream
-				value = civic_beacon_of_liberty
-				value = civic_state_monopoly
-				value = civic_citizen_service
-				value = civic_military_junta
-				value = civic_military_dictatorship
-				value = civic_peaceful_republic
-				value = civic_executive_committee
-				value = civic_philosopher_king
-				value = civic_spiritual_democracy
-				value = civic_divine_council
-				value = civic_imperial_cult
-				value = civic_cyber_demos_cratos
-				value = civic_science_directorate
-				value = civic_cyber_dictatorship
-			}
-		}
-		ethics = {
-			value = ethic_fanatic_spiritualist
-			NOT = {
-				value = ethic_fanatic_capitalism
-			}
-		}
-	}
-	modifier = {
-		planet_pops_consumer_goods_upkeep_mult = -9.99
-		planet_jobs_consumer_goods_upkeep_mult = -9.99
-		job_primitive_artisan_per_pop = 0.05
-		job_priest_per_pop = 0.05
-		pop_ethic_spiritualist_attraction_mult = 0.5
-		pop_growth_speed = 1
-		pop_growth_speed_reduction = 1
-	}
-	random_weight = {
-		base = 5
-		modifier = {
-			factor = 0
-			has_civic = civic_empty_vagrant
-			NOR = {
-				has_origin = origin_ev_both_choosen
-				has_civic = civic_ev_planet_and_fleet
-				has_ascension_perk = ev_land_planets
-			}
-		}
-	}
-}
-
 #量子社会学（红标）
 civic_quantum_sociology = {
 	modification = no
 	description = civic_tooltip_quantum_sociology_effects
+	swap_type = {
+		name = civic_quantum_sociology
+		description = "civic_tooltip_quantum_sociology_effects"
+		trigger = {
+			exists = owner
+			owner = { has_country_flag = breached_shroud }
+		}
+		modifier = {
+			whisperers_in_the_void_attunement_mult = 1
+		}
+	}
 	potential = {
 		ethics = {
 			NOT = {
@@ -1109,10 +466,7 @@ civic_quantum_sociology = {
 	possible = {
 	}
 
-	modifier = {
-	}
-
-	random_weight = {
+	ai_weight = {
 		base = 0
 	}
 }
@@ -1122,16 +476,25 @@ civic_distribution_on_demand = {
 	cost = 3
 	modification = no
 	ai_playable = { always = no }
-	potential = {
-		civics = { NOT = { value = civic_empty_vagrant } }
-	}
+	potential = { always = yes }
 	modifier = {
-		planet_jobs_produces_mult = 999.99
-		planet_building_build_speed_mult = 99.99
-		starbase_shipyard_build_speed_mult = 99.99
-		megastructure_build_speed_mult = 99.99
+		country_leader_cap_add = 9
+		country_leader_pool_size = 9
+		leader_initial_skill = 9
+		negative_traits_leader = -9
+		planet_building_capacity_add = 9
+		planet_jobs_trade_produces_mult = 9.99
+		pop_bonus_workforce_mult = 9.99
+		bonus_automated_workforce_mult = 9.99
+		planetary_ascension_effect_mult = 9.99
+		spy_network_daily_value_mult = 9.99
+		espionage_operation_speed_mult = 9.99
+		country_trust_growth = 9.99
+		ship_fire_rate_mult = 9.99
+		diplo_weight_mult = 9.99
+		empire_size_mult = -9.99
 	}
-	random_weight = {
+	ai_weight = {
 		base = 0
 	}
 }

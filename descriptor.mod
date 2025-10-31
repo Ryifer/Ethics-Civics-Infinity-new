@@ -1,7 +1,9 @@
-version="3.7.3"
+version="4.0.*"
 tags={
-	"Overhaul"
+	"Font"
 }
-name="Ethics and Civics : Infinity"
-supported_version="3.8.3"
+picture="thumbnail.jpg"
+name="More Societies: Infinity"
+supported_version="v4.1.*"
+path="C:/Users/16049/Documents/Paradox Interactive/Stellaris/mod/Ethics and Civics Infinity"
 remote_file_id="2280945168"

@@ -2,38 +2,55 @@
 cost = {
     trigger = {
         owner = {
+            is_ai = yes
+        }
+    }
+    unity = 1
+    mult = value:leader_cost
+}
+cost = {
+    trigger = {
+        owner = {
+            is_ai = no
             is_regular_empire = yes
         }
     }
-    energy = 70
+    energy = 2
     mult = value:leader_cost
 }
 cost = {
     trigger = {
         owner = {
+            is_ai = no
             is_machine_empire = yes
         }
     }
-    minerals = 70
+    minerals = 2
     mult = value:leader_cost
 }
 cost = {
     trigger = {
         owner = {
-            is_hive_empire = yes
-            is_lithoid = no
+            is_ai = no
+            AND = {
+                is_hive_empire = yes
+                is_lithoid = no
+            }
         }
     }
-    food = 70
+    food = 1
     mult = value:leader_cost
 }
 cost = {
     trigger = {
         owner = {
-            is_hive_empire = yes
-            is_lithoid = yes
+            is_ai = no
+            AND = {
+                is_hive_empire = yes
+                is_lithoid = yes
+            }
         }
     }
-    minerals = 70
+    minerals = 1
     mult = value:leader_cost
 }

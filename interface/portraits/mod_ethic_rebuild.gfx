@@ -15,37 +15,57 @@ spriteTypes = {
 		name = "GFX_evt_new_babylon"
 		texturefile = "gfx/event_pictures/new_babylon.dds"
 		masking_texture = "gfx/interface/situation_log/event_mask.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 	spriteType = {
 		name = "GFX_evt_stardust"
 		texturefile = "gfx/event_pictures/stardust.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 	spriteType = {
 		name = "GFX_evt_hongan"
 		texturefile = "gfx/event_pictures/hongan.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 	spriteType = {
 		name = "GFX_evt_red_dawn_fleet"
 		texturefile = "gfx/event_pictures/red_dawn_fleet.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 	spriteType = {
 		name = "GFX_evt_ECI"
 		texturefile = "gfx/event_pictures/ECI.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "GFX_evt_MSI"
+		texturefile = "gfx/event_pictures/MSI.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "GFX_evt_eci_event_10"
+		texturefile = "gfx/event_pictures/eci_event_10.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 	spriteType = {
 		name = "GFX_evt_maitian"
 		texturefile = "gfx/event_pictures/maitian.dds"
-		allwaystransparent = yes
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
 	}
 
 
@@ -260,6 +280,11 @@ spriteTypes = {
 		name = "GFX_edict_setup_menu"
 		textureFile = "gfx/interface/icons/resources/engineering_research_grey.dds"
 	}
+
+	spriteType = {
+		name = "GFX_edict_admin_cap"
+		textureFile = "gfx/interface/icons/modifiers/mod_country_admin_cap_add.dds"
+	}
 	
 	
 	
@@ -293,22 +318,22 @@ spriteTypes = {
 	
 		spriteType = {
 		name = "GFX_ethics_capitalism"
-		texturefile = "gfx/interface/icons/ethics/ethic_capitalism.dds"
+		texturefile = "gfx/interface/icons/ethics/ethic_authoritarian.dds"
 	}
 	
 		spriteType = {
 		name = "GFX_ethics_fanatic_capitalism"
-		texturefile = "gfx/interface/icons/ethics/ethic_fanatic_capitalism.dds"
+		texturefile = "gfx/interface/icons/ethics/ethic_fanatic_authoritarian.dds"
 	}
 	
 		spriteType = {
 		name = "GFX_ethics_socialism"
-		texturefile = "gfx/interface/icons/ethics/ethic_socialism.dds"
+		texturefile = "gfx/interface/icons/ethics/ethic_egalitarian.dds"
 	}
 	
 		spriteType = {
 		name = "GFX_ethics_fanatic_socialism"
-		texturefile = "gfx/interface/icons/ethics/ethic_fanatic_socialism.dds"
+		texturefile = "gfx/interface/icons/ethics/ethic_fanatic_egalitarian.dds"
 	}	
 	
 		spriteType = {
@@ -336,6 +361,11 @@ spriteTypes = {
 		spriteType = {
 		name = "GFX_spaceport_module_hyperium_refinery"
 		texturefile = "gfx/interface/icons/modules/spaceport_module_hyperium_refinery.dds"
+	}
+
+	spriteType = {
+		name = "GFX_airline_security_hub"
+		texturefile = "gfx/interface/icons/modules/airline_security_hub.dds"
 	}
 
 }

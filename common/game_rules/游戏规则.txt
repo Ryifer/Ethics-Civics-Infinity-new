@@ -1,0 +1,277 @@
+###华章注：感谢小伞的泛用兼容对本人的代码支持
+
+# 允许强制迁移
+# This = Country
+can_country_resettle = {
+    OR = {
+        has_policy_flag = resettlement_allowed
+        is_gestalt = yes
+        has_ascension_perk = ap_cosmogenesis
+        has_edict = to_the_countryside
+        custom_tooltip = {
+            text = owns_non_sapient_robots
+            country_has_shackled_robots = yes
+        }
+        hidden_trigger = { #don't need to show this as tooltip only shown when all game rule fails, and this is a special case
+            any_owned_planet = {
+                is_doomsday_planet = yes
+            }
+        }
+    }
+}
+
+# 允许跨物种杂交
+# This = planet
+can_crossbreed_species_on_planet = {
+    exists = owner
+    #	|PF|开关
+    NOT = { has_global_flag = PF_flg_glbl_Hybrid_no }
+    #	wsg/SC	禁止ntr
+    any_owned_species = {
+        NOR = {
+            #	wsg
+            has_wg_traits = yes
+            is_archetype = WARSHIPGIRL
+            is_archetype = SHENHAI
+            is_archetype = UNITED_FLEET
+            is_archetype = NANITES_CROP
+            #	SC
+            UGRC_trgr_spcs_SC = yes
+        }
+    }
+
+    AND = {
+        # +ECI
+        owner = {
+            OR = {
+                has_ascension_perk = ap_xeno_compatibility
+                # ECI
+                OR = {
+                    has_ascension_perk = ap_xeno_compatibility
+                    AND = {
+                        has_ascension_perk = ap_engineered_evolution
+                        has_valid_civic = civic_liberty_of_libido
+                    }
+                }
+            }
+        }
+        count_species = {
+            limit = { is_crossbreeding_possible = yes }
+            count >= 2
+        }
+    }
+}
+
+# 允许开设企业分部
+can_build_branch_offices = {
+    custom_tooltip = {
+        fail_text = BRANCH_OFFICE_NOT_MEGACORP
+        ##	+ETCPM/hiveDLC/MCA/驴岛/wsg	/GF/精灵	/ECI
+        OR = {
+            #	V
+            has_authority = auth_corporate
+            has_civic = civic_galactic_sovereign_megacorp
+
+            ##	ETCPM
+            has_authority = auth_private
+            #	hiveDLC
+            has_valid_civic = civic_mutualistic_behavior
+            has_valid_civic = civic_machine_trading
+            #	MCA
+            has_authority = auth_corporate_fiefdom
+            has_authority = auth_cooperative
+            #	驴岛
+            has_civic = civic_business_union
+            #	wsg
+            has_authority = auth_warshipgirls
+            #	GF
+            has_civic = GF_civic_GK
+            #	精灵
+            is_ELF_can_build_branch_offices = yes
+            #	莉莉
+            has_authority = auth_AL_democratic
+            has_authority = auth_AL_arsenal
+            #	久远
+            KZ_VOY_can_build_branch_offices = yes
+            #	星海帝皇	|义军同盟|
+            is_country_type = rebel_allience
+            #	ARP
+            has_authority = auth_Arp_0
+            #	rmaid		|外派服务飞升|
+            Maid_trigger_0_can_build_branch_offices = yes
+
+            #	ECI		|修正资+资本蜂群+资本智械|
+            has_civic = civic_world_cooperative
+            has_civic = civic_hive_capital_creates_gods
+            has_civic = civic_machine_financial_investment
+            #	HFE
+            is_country_type = hfe_pirate
+            #	SC
+            has_civic = civic_taldarim_marauder
+            #	azl
+            azurlane_default_govement_trigger = yes
+        }
+    }
+}
+
+# This = country
+# 是罪企
+is_criminal_syndicate_rule = {
+    #	|政体|
+    OR = {
+        has_authority = auth_corporate
+        has_valid_civic = civic_galactic_sovereign_megacorp
+        #	UGRC
+        has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+
+        #	wsg
+        has_authority = auth_warshipgirls
+    }
+    #	|国策|
+    OR = {
+        has_valid_civic = civic_criminal_heritage
+        #	UGRC
+        has_country_flag = UGRC_flg_cntr_RULE_criminal_syndicate
+
+        #	ECI
+        has_valid_civic = civic_underworld_society
+        has_civic = civic_hive_capital_creates_gods
+        has_civic = civic_machine_financial_investment
+        #	ECC
+        has_valid_civic = civic_military_dictatorship_corporate
+        #	wsg
+        has_civic = civic_sh_criminal_syndicate
+        #	ev
+        has_valid_civic = civic_ev_criminal_ship
+    }
+}
+
+#格式塔的工作判定
+#this/root = pop
+#checked if job's possible_precalc = can_fill_drone_job
+can_fill_drone_job = {
+    custom_tooltip = DRONE_JOB_TRIGGER
+    hidden_trigger = {
+        exists = owner
+        owner = { is_gestalt = yes }
+        is_being_purged = no
+        is_being_assimilated = no
+        NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+        NOT = { has_citizenship_type = { type = citizenship_limited } }
+    }
+}
+
+#统治者阶级的工作判定
+#this/root = pop
+#checked if job's possible_precalc = can_fill_ruler_job
+can_fill_ruler_job = {
+    if = {
+        limit = {
+            exists = owner
+            owner = {
+                has_origin = origin_necrophage
+                has_trait = trait_necrophage
+            }
+        }
+        custom_tooltip = {
+            text = RULER_JOB_NECROPHAGE_TRIGGER
+            has_trait = trait_necrophage
+            is_enslaved = no
+            is_being_purged = no
+            is_being_assimilated = no
+        }
+    }
+    else_if = {
+        custom_tooltip = RULER_JOB_TRIGGER
+        hidden_trigger = {
+            NOT = { has_ethic = ethic_gestalt_consciousness }
+            exists = owner
+            OR = {
+                is_enslaved = no
+                owner = { has_civic = civic_du_contrat_social }
+                owner = { has_civic = civic_flower_of_evil }
+            }
+            is_being_purged = no
+            is_being_assimilated = no
+            NOT = { has_trait = trait_syncretic_proles }
+            NOT = { has_trait = trait_nerve_stapled }
+            NOT = { has_trait = trait_zombie }
+            NOT = { has_trait = trait_fallen_god }
+            OR = {
+                NOT = { has_trait = trait_mechanical }
+                AND = {
+                    owner = { has_technology = tech_synthetic_workers }
+                    owner = { has_policy_flag = ai_full_rights }
+                }
+            }
+            OR = {
+                NOT = { has_trait = trait_thl_doll }
+                AND = {
+                    owner = { has_technology = tech_sapient_dolls }
+                    owner = { has_policy_flag = ai_full_rights }
+                }
+            }
+            NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+            if = {
+                limit = {
+                    divinity_right_to_work_job_check_trigger_exempt = no
+                }
+                divinity_right_to_work_job_check_trigger_ruler = yes
+            }
+            if = {
+                limit = {
+                    owner = { has_valid_civic = civic_sparta_spirit }
+                }
+                is_enslaved = no
+                has_citizenship_type = { country = owner type = citizenship_full }
+            }
+        }
+    }
+}
+
+#劳工阶级的工作判定
+#this/root = pop
+#checked if job's possible_precalc = can_fill_worker_job
+can_fill_worker_job = {
+    if = {
+        custom_tooltip = WORKER_JOB_TRIGGER
+        hidden_trigger = {
+            NOT = { has_ethic = ethic_gestalt_consciousness }
+            exists = owner
+            is_being_purged = no
+            is_being_assimilated = no
+            is_sparta_citizenship_full = no
+            NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+            NOT = { has_trait = trait_fallen_god }
+            NAND = {
+                has_citizenship_type = { type = citizenship_slavery }
+                OR = {
+                    has_slavery_type = { type = slavery_livestock }
+                    has_slavery_type = { type = slavery_matrix }
+                }
+            }
+            if = {
+                limit = {
+                    divinity_right_to_work_job_check_trigger_exempt = no
+                }
+                divinity_right_to_work_job_check_trigger_worker = yes
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            has_global_flag = eci_educated
+            exists = owner
+            owner = {
+                OR = {
+                    has_valid_civic = civic_moth_chasing_flames
+                    has_valid_civic = civic_ruthless_competition
+                }
+            }
+        }
+        custom_tooltip = {
+            text = POP_EDUCATED_LOW
+            has_modifier = pop_highly_educated
+        }
+    }
+}

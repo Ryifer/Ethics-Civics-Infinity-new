@@ -1,18 +1,7 @@
-triggered_opinion_ap_defender_of_the_galaxy = {
-	trigger = {
-		FROM = {
-			has_ascension_perk = ap_defender_of_the_galaxy
-		}
-	}
-	opinion = {
-		base = 50		# remember to update the ascension perk's tooltip
-	}
-}
-
 triggered_machine_cult_opinion_of_robot_empires = {
 	trigger = {
 		is_country_type = default
-		has_origin = origin_machine_cult
+		has_valid_civic = civic_machine_soul_servant
 		FROM = {
 			is_robot_empire = yes
 			NOR = {
@@ -33,7 +22,7 @@ triggered_robot_empires_opinion_of_machine_cult = {
 			has_civic = civic_machine_terminator
 		}
 		FROM = {
-			has_origin = origin_machine_cult
+			has_valid_civic = civic_machine_soul_servant
 		}
 	}
 	opinion = {
@@ -97,10 +86,10 @@ opinion_industrialist_vs_ecologist = {
 		}
 		OR = {
 			FROM = {
-				has_valid_civic = "civic_environmentalist"
+				is_environmentalist_country = yes
 			}
 			FROM = {
-				has_valid_civic = "civic_keepers_harmony"
+				has_valid_civic = "civic_The_Druid_Way"
 			}
 		}
 	}
@@ -112,8 +101,8 @@ opinion_industrialist_vs_ecologist = {
 opinion_vs_ecologist_industrialist = {
 	trigger = {
 		OR = {
-			has_valid_civic = "civic_environmentalist"
-			has_valid_civic = "civic_keepers_harmony"
+			is_environmentalist_country = yes
+			has_valid_civic = "civic_The_Druid_Way"
 		}
 		OR = {
 			FROM = {
@@ -132,34 +121,13 @@ opinion_vs_ecologist_industrialist = {
 	}
 }
 
-opinion_capitalists_vs_collectivists = {
-	trigger = {
-		has_ai_personality = ruthless_capitalists
-		OR = {
-			has_ethic = "ethic_capitalism"
-			has_ethic = "ethic_fanatic_capitalism"
-		}
-		OR = {
-			FROM = {
-				has_ethic = "ethic_socialism"
-			}
-			FROM = {
-				has_ethic = "ethic_fanatic_socialism"
-			}
-		}
-	}
-	opinion = {
-		base = -50
-	}
-}
-
 opinion_socialism_pos_1 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 		}
 		from = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 		}
 	}
 	opinion = {
@@ -170,11 +138,11 @@ opinion_socialism_pos_1 = {
 opinion_socialism_pos_2 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_fanatic_socialism"
+				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
 	}
@@ -186,11 +154,11 @@ opinion_socialism_pos_2 = {
 opinion_socialism_pos_3 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_fanatic_socialism"
+			has_ethic = "ethic_fanatic_egalitarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_socialism"
+				has_ethic = "ethic_egalitarian"
 			}
 		}
 	}
@@ -202,11 +170,11 @@ opinion_socialism_pos_3 = {
 opinion_socialism_pos_4 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_fanatic_socialism"
+			has_ethic = "ethic_fanatic_egalitarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_fanatic_socialism"
+				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
 	}
@@ -218,42 +186,67 @@ opinion_socialism_pos_4 = {
 opinion_socialism_neg_1 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_capitalism"
-		}
-		from = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_authoritarian"
 		}
 	}
 	opinion = {
-		base = -20
+		modifier = {
+			add = -20
+			FROM = {
+				has_ethic = "ethic_egalitarian"
+			}
+		}
+		modifier = {
+			add = -50
+			has_ai_personality = ruthless_capitalists
+			FROM = {
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
+		}
 	}
 }
 
 opinion_socialism_neg_2 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_capitalism"
-		}
-		from = {
-			has_ethic = "ethic_fanatic_socialism"
+			has_ethic = "ethic_authoritarian"
 		}
 	}
 	opinion = {
-		base = -35
+		modifier = {
+			add = -35
+			FROM = {
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
+		}
+		modifier = {
+			add = -50
+			has_ai_personality = ruthless_capitalists
+			FROM = {
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
+		}
 	}
 }
 
 opinion_socialism_neg_3 = {
 	trigger = {
-		OR = {
-			has_ethic = "ethic_fanatic_capitalism"
-		}
-		from = {
-			has_ethic = "ethic_socialism"
-		}
+		has_ethic = "ethic_fanatic_authoritarian"
 	}
 	opinion = {
-		base = -35
+		modifier = {
+			add = -35
+			FROM = {
+				has_ethic = "ethic_egalitarian"
+			}
+		}
+		modifier = {
+			add = -50
+			has_ai_personality = ruthless_capitalists
+			FROM = {
+				has_ethic = "ethic_fanatic_egalitarian"
+			}
+		}
 	}
 }
 
@@ -264,25 +257,49 @@ opinion_socialism_neg_4 = {
 	opinion = {
 		modifier = {
 			add = -50
-			has_ethic = "ethic_fanatic_capitalism"
+			has_ethic = "ethic_fanatic_authoritarian"
 			FROM = {
-				has_ethic = "ethic_fanatic_socialism"
-				NOT = { has_valid_civic = civic_triple_the_profit }
+				has_ethic = "ethic_fanatic_egalitarian"
 			}
 		}
 		modifier = {
 			add = -1000
-			has_valid_civic = civic_machine_financial_investment
+			OR = {
+				has_valid_civic = civic_machine_financial_investment
+				has_valid_civic = civic_hive_capital_creates_gods
+			}
 			FROM = {
-				has_valid_civic = civic_machine_liberator
+				OR = {
+					has_valid_civic = civic_machine_liberator
+					AND = {
+						has_ethic = "ethic_fanatic_egalitarian"
+						is_authoritarian = no
+					}
+				}
 			}
 		}
 		modifier = {
-			add = -500
+			add = -100
+			OR = {
+				has_valid_civic = civic_machine_financial_investment
+				has_valid_civic = civic_hive_capital_creates_gods
+			}
+			FROM = {
+				OR = {
+					has_ethic = "ethic_egalitarian"
+					AND = {
+						has_ethic = "ethic_fanatic_egalitarian"
+						is_authoritarian = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			add = -150
 			has_valid_civic = civic_triple_the_profit
 			FROM = {
 				OR = {
-					has_ethic = "ethic_fanatic_socialism"
+					has_ethic = "ethic_fanatic_egalitarian"
 					has_valid_civic = civic_machine_liberator
 				}
 			}
@@ -293,10 +310,10 @@ opinion_socialism_neg_4 = {
 opinion_capitalism_pos_1 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_capitalism"
+			has_ethic = "ethic_authoritarian"
 		}
 		from = {
-			has_ethic = "ethic_capitalism"
+			has_ethic = "ethic_authoritarian"
 		}
 	}
 	opinion = {
@@ -307,11 +324,11 @@ opinion_capitalism_pos_1 = {
 opinion_capitalism_pos_2 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_capitalism"
+			has_ethic = "ethic_authoritarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 		}
 	}
@@ -323,11 +340,11 @@ opinion_capitalism_pos_2 = {
 opinion_capitalism_pos_3 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_fanatic_capitalism"
+			has_ethic = "ethic_fanatic_authoritarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_capitalism"
+				has_ethic = "ethic_authoritarian"
 			}
 		}
 	}
@@ -339,11 +356,11 @@ opinion_capitalism_pos_3 = {
 opinion_capitalism_pos_4 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_fanatic_capitalism"
+			has_ethic = "ethic_fanatic_authoritarian"
 		}
 		from = {
 			OR = {
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 		}
 	}
@@ -355,10 +372,10 @@ opinion_capitalism_pos_4 = {
 opinion_capitalism_neg_1 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 		}
 		from = {
-			has_ethic = "ethic_capitalism"
+			has_ethic = "ethic_authoritarian"
 		}
 	}
 	opinion = {
@@ -369,10 +386,10 @@ opinion_capitalism_neg_1 = {
 opinion_capitalism_neg_2 = {
 	trigger = {
 		OR = {
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 		}
 		from = {
-			has_ethic = "ethic_fanatic_capitalism"
+			has_ethic = "ethic_fanatic_authoritarian"
 		}
 	}
 	opinion = {
@@ -387,25 +404,28 @@ opinion_capitalism_neg_3 = {
 	opinion = {
 		modifier = {
 			add = -35
-			has_ethic = "ethic_fanatic_socialism"
+			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = {
-				has_ethic = "ethic_capitalism"
+				has_ethic = "ethic_authoritarian"
 			}
 		}
 		modifier = {
 			add = -100
 			NOR = {
 				AND = {
-					has_ethic = "ethic_capitalism"
+					has_ethic = "ethic_authoritarian"
 					NOR = {
 						has_ethic = "ethic_fanatic_egalitarian"
 					}
 				}
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_fanatic_authoritarian"
 				has_valid_civic = civic_machine_liberator
 			}
 			FROM = {
-				has_valid_civic = civic_machine_financial_investment
+				OR = {
+					has_valid_civic = civic_machine_financial_investment
+					has_valid_civic = civic_hive_capital_creates_gods
+				}
 			}
 		}
 	}
@@ -418,25 +438,22 @@ opinion_capitalism_neg_4 = {
 	opinion = {
 		modifier = {
 			add = -50
-			has_ethic = "ethic_fanatic_socialism"
-			FROM = {
-				has_ethic = "ethic_fanatic_capitalism"
-				NOT = { has_valid_civic = civic_triple_the_profit }
-			}
+			has_ethic = "ethic_fanatic_egalitarian"
+			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
 		}
 		modifier = {
 			add = -1000
-			has_valid_civic = civic_machine_liberator
+			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = {
-				has_valid_civic = civic_machine_financial_investment
+				OR = {
+					has_valid_civic = civic_machine_financial_investment
+					has_valid_civic = civic_hive_capital_creates_gods
+				}
 			}
 		}
 		modifier = {
 			add = -500
-			OR = {
-				has_ethic = "ethic_fanatic_socialism"
-				has_valid_civic = civic_machine_liberator
-			}
+			has_valid_civic = civic_machine_liberator
 			FROM = {
 				has_valid_civic = civic_triple_the_profit
 			}
@@ -451,7 +468,7 @@ opinion_machine_liberator_pos_1 = {
 	opinion = {
 		modifier = {
 			add = 20
-			has_ethic = "ethic_socialism"
+			has_ethic = "ethic_egalitarian"
 			NOR = {
 				has_ethic = "ethic_authoritarian"
 				has_ethic = "ethic_fanatic_authoritarian"
@@ -462,11 +479,12 @@ opinion_machine_liberator_pos_1 = {
 		}
 		modifier = {
 			add = 40
-			has_ethic = "ethic_fanatic_socialism"
+			has_ethic = "ethic_fanatic_egalitarian"
 			NOR = {
 				has_ethic = "ethic_authoritarian"
 				has_ethic = "ethic_fanatic_authoritarian"
 				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
 			}
 			FROM = {
 				has_civic = civic_machine_liberator
@@ -474,7 +492,11 @@ opinion_machine_liberator_pos_1 = {
 		}
 		modifier = {
 			add = 60
-			has_valid_civic = civic_shared_burden
+			OR = {
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
+				has_civic = civic_machine_liberator
+			}
 			FROM = {
 				has_civic = civic_machine_liberator
 			}
@@ -493,8 +515,8 @@ opinion_machine_liberator_pos_2 = {
 				has_ethic = "ethic_egalitarian"
 			}
 			NOR = {
-				has_ethic = "ethic_capitalism"
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_authoritarian"
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 			FROM = {
 				has_civic = civic_machine_liberator
@@ -506,8 +528,8 @@ opinion_machine_liberator_pos_2 = {
 				has_ethic = "ethic_fanatic_egalitarian"
 			}
 			NOR = {
-				has_ethic = "ethic_capitalism"
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_authoritarian"
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 			FROM = {
 				has_civic = civic_machine_liberator
@@ -525,7 +547,7 @@ opinion_machine_liberator_pos_3 = {
 			add = 20
 			has_civic = civic_machine_liberator
 			FROM = {
-				has_ethic = "ethic_socialism"
+				has_ethic = "ethic_egalitarian"
 				NOR = {
 					has_ethic = "ethic_authoritarian"
 					has_ethic = "ethic_fanatic_authoritarian"
@@ -536,11 +558,12 @@ opinion_machine_liberator_pos_3 = {
 			add = 40
 			has_civic = civic_machine_liberator
 			FROM = {
-				has_ethic = "ethic_fanatic_socialism"
+				has_ethic = "ethic_fanatic_egalitarian"
 				NOR = {
 					has_ethic = "ethic_authoritarian"
 					has_ethic = "ethic_fanatic_authoritarian"
 					has_valid_civic = civic_shared_burden
+					has_valid_civic = civic_advanced_socialism
 				}
 			}
 		}
@@ -548,7 +571,10 @@ opinion_machine_liberator_pos_3 = {
 			add = 60
 			has_civic = civic_machine_liberator
 			FROM = {
-				has_valid_civic = civic_shared_burden
+				OR = {
+					has_valid_civic = civic_shared_burden
+					has_valid_civic = civic_advanced_socialism
+				}
 			}
 		}
 	}
@@ -562,7 +588,7 @@ opinion_machine_liberator_pos_4 = {
 		modifier = {
 			add = -20
 			OR = {
-				has_ethic = "ethic_capitalism"
+				has_ethic = "ethic_authoritarian"
 			}
 			FROM = {
 				has_civic = civic_machine_liberator
@@ -571,7 +597,7 @@ opinion_machine_liberator_pos_4 = {
 		modifier = {
 			add = -40
 			OR = {
-				has_ethic = "ethic_fanatic_capitalism"
+				has_ethic = "ethic_fanatic_authoritarian"
 			}
 			FROM = {
 				has_civic = civic_machine_liberator
@@ -617,7 +643,7 @@ opinion_machine_liberator_pos_6 = {
 			FROM = {
 				OR = {
 					has_ethic = "ethic_authoritarian"
-					has_ethic = "ethic_capitalism"
+					has_ethic = "ethic_authoritarian"
 				}
 			}
 		}
@@ -626,7 +652,7 @@ opinion_machine_liberator_pos_6 = {
 			has_civic = civic_machine_liberator
 			FROM = {
 				OR = {
-					has_ethic = "ethic_fanatic_capitalism"
+					has_ethic = "ethic_fanatic_authoritarian"
 					has_ethic = "ethic_fanatic_authoritarian"
 				}
 			}
@@ -635,7 +661,10 @@ opinion_machine_liberator_pos_6 = {
 			add = -1000
 			has_civic = civic_machine_liberator
 			FROM = {
-				has_civic = civic_machine_financial_investment
+				OR = {
+					has_valid_civic = civic_machine_financial_investment
+					has_valid_civic = civic_hive_capital_creates_gods
+				}
 			}
 		}
 	}
@@ -710,24 +739,24 @@ opinion_vilified_2 = {
 opinion_dc_vs_democratic = {
 	opinion = {
 		modifier = {
-			add = 25
-			has_ai_personality = democratic_crusaders
-			NOR = {
-				has_valid_civic = civic_parliamentary_system
-				has_valid_civic = civic_parliamentary_system_corporate
-			}
-			FROM = { has_authority = auth_democratic }
-		}
-	}
-	opinion = {
-		modifier = {
 			add = 50
 			has_ai_personality = democratic_crusaders
 			NOR = {
 				has_valid_civic = civic_parliamentary_system
 				has_valid_civic = civic_parliamentary_system_corporate
 			}
-			FROM = { has_authority = auth_direct_democratic }
+			FROM = { is_democratic_authority = yes }
+		}
+	}
+	opinion = {
+		modifier = {
+			add = 100
+			has_ai_personality = democratic_crusaders
+			NOR = {
+				has_valid_civic = civic_parliamentary_system
+				has_valid_civic = civic_parliamentary_system_corporate
+			}
+			FROM = { is_direct_democratic_authority = yes }
 		}
 	}
 }
@@ -741,9 +770,11 @@ opinion_dc_vs_oligarchic = {
 				has_valid_civic = civic_parliamentary_system
 				has_valid_civic = civic_parliamentary_system_corporate
 			}
-			OR = {
-				FROM = { has_authority = auth_oligarchic }
-				FROM = { has_authority = auth_corporate }
+			FROM = {
+				OR = {
+					is_oligarchic_authority = yes
+					has_authority = auth_corporate
+				}
 			}
 		}
 	}
@@ -760,8 +791,8 @@ opinion_dc_vs_autocracy = {
 			}
 			FROM = {
 				OR = {
-					has_authority = auth_imperial
-					has_authority = auth_dictatorial
+					is_imperial_authority = yes
+					is_dictatorial_authority = yes
 				}
 			}
 		}
@@ -775,12 +806,11 @@ opinion_dc_vs_autocracy = {
 			}
 			FROM = {
 				OR = {
-					has_authority = auth_direct_democratic
-					has_authority = auth_democratic
-					has_authority = auth_oligarchic
-					has_authority = auth_dictatorial
-					has_authority = auth_imperial
-					has_valid_civic = civic_parliamentary_system_corporate
+					is_direct_democratic_authority = yes
+					is_democratic_authority = yes
+					is_oligarchic_authority = yes
+					is_dictatorial_authority = yes
+					is_imperial_authority = yes
 				}
 			}
 		}
@@ -789,7 +819,7 @@ opinion_dc_vs_autocracy = {
 
 opinion_closed_the_branch = {
 	opinion = {
-		base = 10
+		base = 20
 	}
 
 	accumulative = yes
@@ -861,7 +891,7 @@ triggered_opinion_diplo_stance_revolution_1 = {
 	}
 	opinion = {
 		modifier = {
-			add = -100
+			add = -50
 			FROM = {
 				OR = {
 					has_policy_flag = diplo_stance_supremacist
@@ -885,7 +915,7 @@ triggered_opinion_diplo_stance_revolution_2 = {
 	}
 	opinion = {
 		modifier = {
-			add = -100
+			add = -50
 			FROM = {
 				has_policy_flag = diplo_stance_revolution
 			}
@@ -896,10 +926,7 @@ triggered_opinion_diplo_stance_revolution_2 = {
 opinion_ap_future_society_1 = {
 	trigger = {
 		has_ascension_perk = ap_future_society
-		NOR = {
-			has_valid_civic = civic_shared_burden
-			has_valid_civic = civic_socialistic
-		}
+		is_true_scientific_socialism = no
 	}
 	opinion = {
 		modifier = {
@@ -912,7 +939,11 @@ opinion_ap_future_society_1 = {
 							is_in_federation_with = root
 						}
 					}
-					has_ethic = ethic_focused
+
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
 				}
 			}
 		}
@@ -921,7 +952,11 @@ opinion_ap_future_society_1 = {
 
 opinion_ap_future_society_2 = {
 	trigger = {
-		has_ethic = ethic_focused
+
+		OR = {
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
 	}
 	opinion = {
 		modifier = {
@@ -943,10 +978,7 @@ opinion_ap_future_society_2 = {
 opinion_ap_future_society_3 = {
 	trigger = {
 		has_ascension_perk = ap_future_society
-		OR = {
-			has_valid_civic = civic_shared_burden
-			has_valid_civic = civic_socialistic
-		}
+		is_true_scientific_socialism = yes
 	}
 	opinion = {
 		modifier = {
@@ -957,11 +989,13 @@ opinion_ap_future_society_3 = {
 						has_ascension_perk = ap_future_society
 						NOR = {
 							is_in_federation_with = root
-							has_valid_civic = civic_shared_burden
-							has_valid_civic = civic_socialistic
+							is_true_scientific_socialism = yes
 						}
 					}
-					has_ethic = ethic_focused
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
 				}
 			}
 		}
@@ -976,9 +1010,13 @@ opinion_zarqlanism_idea_1 = {
 		modifier = {
 			add = -200
 			FROM = {
-				And = {
+				AND = {
 					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_focused
+
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
 				}
 				NOR = {
 					is_in_federation_with = root
@@ -991,7 +1029,11 @@ opinion_zarqlanism_idea_1 = {
 opinion_zarqlanism_idea_2 = {
 	trigger = {
 		has_ethic = ethic_fanatic_spiritualist
-		has_ethic = ethic_focused
+
+	OR = {
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+	}
 	}
 	opinion = {
 		modifier = {
@@ -1026,20 +1068,67 @@ opinion_civic_altruism = {
 
 opinion_crazy_exploiter = {
 	trigger = {
-		OR = {
-			has_ethic = ethic_egalitarian
-			has_ethic = ethic_fanatic_egalitarian
-			has_ethic = ethic_xenophile
-			has_ethic = ethic_fanatic_xenophile
-			has_ethic = ethic_fanatic_pacifist
-		}
 		NOT = { has_valid_civic = civic_triple_the_profit }
 	}
 	opinion = {
 		modifier = {
 			add = -40
+			OR = {
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_fanatic_pacifist
+			}
 			FROM = {
 				has_valid_civic = civic_triple_the_profit
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -60
+			is_true_scientific_socialism = yes
+			FROM = {
+				has_valid_civic = civic_triple_the_profit
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -100
+			has_edict = cultural_revolution
+			FROM = {
+				has_valid_civic = civic_triple_the_profit
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			OR = {
+				has_origin = origin_galaxy_light
+				has_origin = origin_galaxy_light_liberator
+			}
+			FROM = {
+				OR = {
+					has_valid_civic = civic_triple_the_profit
+					has_valid_civic = civic_machine_financial_investment
+					has_valid_civic = civic_hive_capital_creates_gods
+				}
+				NOT = { has_origin = origin_galactic_empire }
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -2000
+			OR = {
+				has_origin = origin_galaxy_light
+				has_origin = origin_galaxy_light_liberator
+			}
+			FROM = {
+				has_origin = origin_galactic_empire
 			}
 		}
 	}
@@ -1047,10 +1136,7 @@ opinion_crazy_exploiter = {
 
 opinion_envious = {
 	trigger = {
-		OR = {
-			has_ethic = ethic_capitalism
-			has_ethic = ethic_fanatic_capitalism
-		}
+		is_authoritarian = yes
 		NOT = { has_valid_civic = civic_triple_the_profit }
 	}
 	opinion = {
@@ -1077,50 +1163,10 @@ opinion_similar = {
 	}
 }
 
-opinion_you_are_human_1 = {
-	trigger = {
-		has_origin = origin_galaxy_light
-	}
-	opinion = {
-		modifier = {
-			add = -1000
-			FROM = {
-				OR = {
-					owner_main_species = { species_portrait = human }
-					owner_main_species = { species_portrait = human_legacy }
-				}
-				NOT = {
-					is_socialism = yes
-					is_egalitarian = yes
-				}
-			}
-		}
-	}
-}
-
-opinion_you_are_human_2 = {
-	trigger = {
-		has_origin = origin_galaxy_light
-	}
-	opinion = {
-		modifier = {
-			add = -50
-			FROM = {
-				OR = {
-					owner_main_species = { species_portrait = human }
-					owner_main_species = { species_portrait = human_legacy }
-				}
-				is_socialism = yes
-				is_egalitarian = yes
-			}
-		}
-	}
-}
-
 opinion_parishioner = {
 	trigger = {
 		OR = {
-			has_origin = origin_machine_cult
+			has_valid_civic = civic_machine_soul_servant
 			has_origin = origin_adeptus_mechanicus
 		}
 	}
@@ -1129,7 +1175,7 @@ opinion_parishioner = {
 			add = 25
 			FROM = {
 				OR = {
-					has_origin = origin_machine_cult
+					has_valid_civic = civic_machine_soul_servant
 					has_origin = origin_adeptus_mechanicus
 				}
 			}
@@ -1139,7 +1185,7 @@ opinion_parishioner = {
 		modifier = {
 			add = 25
 			FROM = {
-				has_valid_civic = civic_machine_soul_servant
+				has_origin = origin_machine_cult
 			}
 		}
 	}
@@ -1149,9 +1195,9 @@ triggered_opinion_barbaric_despoilers = {
 	trigger = {
 		is_country_type = default
 		NOR = {
-			is_capitalism = yes
+			is_authoritarian = yes
 			is_pacifist = yes
-			is_socialism = yes
+			is_egalitarian = yes
 			has_ethic = ethic_gestalt_consciousness
 			has_valid_civic = civic_fanatic_purifiers
 		}
@@ -1166,19 +1212,50 @@ triggered_opinion_barbaric_despoilers = {
 triggered_authoritarian_opinion_barbaric_despoilers = {
 	trigger = {
 		is_country_type = default
-		is_capitalism = yes
-		NOT = { has_civic = civic_barbaric_despoilers }
-		FROM = { has_civic = civic_barbaric_despoilers }
+		is_authoritarian = yes
 	}
 	opinion = {
-		base = -80
+		modifier = {
+			add = -80
+			NOT = { has_civic = civic_barbaric_despoilers }
+			FROM = { has_civic = civic_barbaric_despoilers }
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			OR = {
+				has_valid_civic = civic_triple_the_profit
+				has_valid_civic = civic_machine_financial_investment
+				has_valid_civic = civic_hive_capital_creates_gods
+			}
+			NOT = { has_origin = origin_galactic_empire }
+			FROM = {
+				OR = {
+					has_origin = origin_galaxy_light
+					has_origin = origin_galaxy_light_liberator
+				}
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -2000
+			has_origin = origin_galactic_empire
+			FROM = {
+				OR = {
+					has_origin = origin_galaxy_light
+					has_origin = origin_galaxy_light_liberator
+				}
+			}
+		}
 	}
 }
 
 triggered_militarist_opinion_barbaric_despoilers = {
 	trigger = {
 		is_country_type = default
-		is_socialism = yes
+		is_egalitarian = yes
 		NOT = { has_civic = civic_barbaric_despoilers }
 		FROM = { has_civic = civic_barbaric_despoilers }
 	}
@@ -1260,6 +1337,34 @@ triggered_opinion_honorary_curator = {
 	}
 }
 
+opinion_xeno_militarist = {
+	trigger = {
+		has_valid_civic = civic_xeno_militarist
+	}
+	opinion = {
+		modifier = {
+			add = 40
+			from = {
+				relative_power = {
+					who = root
+					value = pathetic
+				}
+			}
+		}
+	}
+	opinion = {
+		modifier = {
+			add = 20
+			from = {
+				relative_power = {
+					who = root
+					value = inferior
+				}
+			}
+		}
+	}
+}
+
 ### Broken Shackles / Payback vs. MSI
 
 opinion_former_slaves = {
@@ -1322,6 +1427,112 @@ opinion_civic_crafters = {
 					has_civic = civic_fanatic_purifiers
 					has_civic = civic_hive_devouring_swarm
 					has_civic = civic_machine_terminator
+				}
+			}
+		}
+	}
+}
+
+opinion_desecrated_holy_world_eci = {
+	trigger = {
+		has_country_flag = destruction_holy_tomb
+	}
+	opinion = {
+		modifier = {
+			add = -50
+			FROM = {
+				has_valid_civic = civic_imperial_cult
+			}
+		}
+	}
+}
+
+opinion_shared_destiny = {
+	trigger = {
+		has_ascension_perk = ap_shared_destiny
+	}
+	opinion = {
+		modifier = {
+			add = 30
+			root = { is_overlord_to = FROM }
+		}
+	}
+}
+
+opinion_netori = {
+	opinion = {
+		base = -25
+	}
+
+	accumulative = yes
+
+	decay = {
+		base = 2
+	}
+}
+
+opinion_civic_female_friendly_1 = {
+	trigger = {
+		OR = {
+			has_valid_civic = civic_female_friendly
+			has_valid_civic = civic_female_friendly_corporate
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			FROM = {
+				NOR = {
+					has_valid_civic = civic_female_friendly
+					has_valid_civic = civic_female_friendly_corporate
+				}
+				leader = {
+					is_ruler = yes
+					species = { species_gender = male }
+				}
+			}
+		}
+	}
+}
+
+opinion_civic_female_friendly_2 = {
+	trigger = {
+		OR = {
+			has_valid_civic = civic_female_friendly
+			has_valid_civic = civic_female_friendly_corporate
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			FROM = {
+				NOR = {
+					has_valid_civic = civic_female_friendly
+					has_valid_civic = civic_female_friendly_corporate
+				}
+			}
+			leader = {
+				is_ruler = yes
+				species = { species_gender = female }
+			}
+		}
+	}
+}
+
+opinion_civic_female_friendly_3 = {
+	trigger = {
+		OR = {
+			has_valid_civic = civic_female_friendly
+			has_valid_civic = civic_female_friendly_corporate
+		}
+	}
+	opinion = {
+		modifier = {
+			add = -1000
+			FROM = {
+				OR = {
+					has_valid_civic = civic_female_friendly
+					has_valid_civic = civic_female_friendly_corporate
 				}
 			}
 		}

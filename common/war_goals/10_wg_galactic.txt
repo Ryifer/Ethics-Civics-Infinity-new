@@ -4,10 +4,10 @@ wg_liberation_from_the_empire = {
 	hide_if_no_cb = yes
 	release_occupied_systems_on_status_quo = yes
 
-	allowed_peace_offers = {
-		status_quo
-		surrender
-		demand_surrender
+	forbidden_peace_offers = {
+		demand_surrender = ""
+		status_quo = ""
+		surrender = ""
 	}
 
 	surrender_acceptance = -100
@@ -183,41 +183,47 @@ wg_galactic_revolution_liberation_from_the_empire = {
 				}
 			}
 			from = { 
-				every_owned_pop = {
+				every_owned_pop_group = {
 					random_list = {
 						1 = {
-							wipe_pop_ethos = yes
-							pop_change_ethic = ethic_socialism
-						}
-						1 = {
-							wipe_pop_ethos = yes
-							pop_change_ethic = ethic_egalitarian
+							pop_group_transfer_ethic = {
+								ETHOS = ethic_egalitarian
+								AMOUNT = 100
+							}
 						}
 						3 = { }
 					}
-					set_timed_pop_flag = { flag = changed_pop days = 2 }
+					set_timed_pop_group_flag = { flag = changed_pop days = 2 }
 				}
 				capital_scope = {
-					every_owned_pop = {
+					every_owned_pop_group = {
 						random_list = {
-							2 = {
-								wipe_pop_ethos = yes
-								pop_change_ethic = ethic_socialism
-							}
-							1 = {
-								wipe_pop_ethos = yes
-								pop_change_ethic = ethic_egalitarian
+							3 = {
+								pop_group_transfer_ethic = {
+									ETHOS = ethic_egalitarian
+									AMOUNT = 100
+								}
 							}
 							2 = { }
 						}
-						set_timed_pop_flag = { flag = changed_pop days = 2 }
+						set_timed_pop_group_flag = { flag = changed_pop days = 2 }
 					}
 				}
 			}
 			if = {
 				limit = {
-					root = { has_civic = civic_shared_burden }
-					from = { NOT = { has_civic = civic_shared_burden } }
+					root = {
+						OR = {
+							has_civic = civic_shared_burden
+							has_civic = civic_advanced_socialism
+						}
+					}
+					from = {
+						NOR = {
+							has_civic = civic_shared_burden
+							has_civic = civic_advanced_socialism
+						}
+					}
 				}
 				from = {
 					change_government = {

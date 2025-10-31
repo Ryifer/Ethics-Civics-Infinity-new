@@ -5,7 +5,6 @@ overlord_propagandist = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_propaganda_office
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -17,7 +16,10 @@ overlord_propagandist = {
 	
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -47,7 +49,6 @@ overlord_propagandist_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_propaganda_office
-	clothes_texture_index = 1
 	icon = overlord_propagandist
 
 	possible_pre_triggers = {
@@ -89,7 +90,6 @@ overlord_academic = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_satellite_campus
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -101,7 +101,10 @@ overlord_academic = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -138,7 +141,6 @@ overlord_academic_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_satellite_campus
-	clothes_texture_index = 1
 	icon = overlord_academic
 
 	possible_pre_triggers = {
@@ -192,7 +194,6 @@ overlord_trader = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_emporium
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -204,7 +205,10 @@ overlord_trader = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -243,7 +247,6 @@ overlord_trader_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_emporium
-	clothes_texture_index = 1
 	icon = overlord_trader
 
 	possible_pre_triggers = {
@@ -294,7 +297,6 @@ aid_worker = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_aid_agency
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -306,7 +308,10 @@ aid_worker = {
 
 	possible_precalc = can_fill_worker_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 	}
 
 	triggered_planet_modifier = {
@@ -337,7 +342,6 @@ aid_worker_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_aid_agency
-	clothes_texture_index = 1
 	icon = aid_worker
 
 	possible_pre_triggers = {
@@ -378,7 +382,6 @@ overlord_breeder = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_splinter_hive
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -390,7 +393,10 @@ overlord_breeder = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -440,7 +446,6 @@ overlord_breeder_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_splinter_hive
-	clothes_texture_index = 1
 	icon = overlord_breeder
 
 	possible_pre_triggers = {
@@ -502,7 +507,6 @@ mind_thrall = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_distributed_processing
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -532,7 +536,6 @@ mind_thrall_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_distributed_processing
-	clothes_texture_index = 1
 	icon = mind_thrall
 
 	possible_pre_triggers = {
@@ -563,7 +566,6 @@ overlord_offspring_drone_feeder = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_offspring_nest
-	clothes_texture_index = 1
 	icon = spawning_drone
 
 	possible_pre_triggers = {
@@ -576,7 +578,10 @@ overlord_offspring_drone_feeder = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -623,7 +628,6 @@ overlord_offspring_drone_feeder_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_offspring_nest
-	clothes_texture_index = 1
 	icon = spawning_drone
 
 	possible_pre_triggers = {
@@ -682,7 +686,6 @@ overlord_metallurgist = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
 	building_icon = holding_offworld_foundry
-	clothes_texture_index = 3
 	icon = foundry
 
 	possible_pre_triggers = {
@@ -805,7 +808,6 @@ overlord_catalytic_technician = {
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
 	building_icon = holding_offworld_foundry
-	clothes_texture_index = 3
 	icon = catalytic_technician
 
 	possible_pre_triggers = {
@@ -904,7 +906,6 @@ overlord_beholder = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_overlord_vigil_command
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -916,7 +917,10 @@ overlord_beholder = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -972,7 +976,6 @@ overlord_beholder_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_overlord_vigil_command
-	clothes_texture_index = 1
 	icon = overlord_beholder
 
 	possible_pre_triggers = {
@@ -1040,7 +1043,6 @@ overlord_necromancer = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_dread_encampment
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -1052,7 +1054,10 @@ overlord_necromancer = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -1078,8 +1083,8 @@ overlord_necromancer = {
 		}
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 2
+	pop_group_modifier = {
+		planet_defense_armies_add = 2
 	}
 	overlord_resources = {
 		category = planet_overlord_necromancers
@@ -1101,7 +1106,6 @@ overlord_necromancer_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_dread_encampment
-	clothes_texture_index = 1
 	icon = overlord_beholder
 
 	possible_pre_triggers = {
@@ -1139,8 +1143,8 @@ overlord_necromancer_drone = {
 		}
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 2
+	pop_group_modifier = {
+		planet_defense_armies_add = 2
 	}
 	overlord_resources = {
 		category = planet_overlord_necromancers
@@ -1162,7 +1166,6 @@ overlord_reassigner = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_posthumous_employment_center
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -1174,7 +1177,10 @@ overlord_reassigner = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -1212,7 +1218,6 @@ overlord_reassigner_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_dread_encampment
-	clothes_texture_index = 1
 	icon = overlord_beholder
 
 	possible_pre_triggers = {
@@ -1262,7 +1267,6 @@ overlord_recruiter = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_recruitment_office
-	clothes_texture_index = 1
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -1274,7 +1278,10 @@ overlord_recruiter = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		complex_specialist_job_check_trigger = yes
 	}
 
@@ -1286,8 +1293,8 @@ overlord_recruiter = {
 		}
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 3
+	pop_group_modifier = {
+		planet_defense_armies_add = 3
 	}
 
 	weight = {
@@ -1302,7 +1309,6 @@ overlord_recruiter_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_recruitment_office
-	clothes_texture_index = 1
 	icon = overlord_beholder
 
 	possible_pre_triggers = {
@@ -1326,8 +1332,8 @@ overlord_recruiter_drone = {
 		}
 	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 3
+	pop_group_modifier = {
+		planet_defense_armies_add = 3
 	}
 
 	weight = {
@@ -1341,7 +1347,6 @@ overlord_ranger = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_park_ranger_lodge
-	clothes_texture_index = 1
 	icon = ranger
 
 	possible_pre_triggers = {
@@ -1354,7 +1359,10 @@ overlord_ranger = {
 
 	possible_precalc = can_fill_worker_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 	}
 	
 	planet_modifier = {
@@ -1379,7 +1387,6 @@ overlord_ranger_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_park_ranger_lodge
-	clothes_texture_index = 1
 	icon = ranger
 
 	possible_pre_triggers = {
@@ -1420,7 +1427,6 @@ overlord_arborist = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_tree_of_life_sapling
-	clothes_texture_index = 1
 	icon = ranger
 
 	possible_pre_triggers = {
@@ -1433,7 +1439,10 @@ overlord_arborist = {
 
 	possible_precalc = can_fill_worker_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 	}
 
 	resources = {
@@ -1460,7 +1469,6 @@ overlord_arborist_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_tree_of_life_sapling
-	clothes_texture_index = 1
 	icon = ranger
 
 	possible_pre_triggers = {
@@ -1498,7 +1506,6 @@ overlord_bio_trophy = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_organic_sanctuary
-	clothes_texture_index = 1
 	icon = bio_trophy
 
 	possible_pre_triggers = {
@@ -1512,7 +1519,10 @@ overlord_bio_trophy = {
 	possible_precalc = can_fill_worker_job
 
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		is_robotic_species = no
 	}
 
@@ -1532,7 +1542,7 @@ overlord_bio_trophy = {
 	planet_modifier = {
 		pop_happiness = 0.01
 	}
-	triggered_pop_modifier = {
+	triggered_planet_pop_group_modifier_for_all = {
 		pop_happiness = 0.40
 		pop_housing_usage_add = -1
 		planet_pops_upkeep_mult = -2
@@ -1549,7 +1559,6 @@ overlord_bio_trophy_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_organic_sanctuary
-	clothes_texture_index = 1
 	icon = bio_trophy
 
 	possible_pre_triggers = {
@@ -1563,7 +1572,10 @@ overlord_bio_trophy_drone = {
 	possible_precalc = can_fill_drone_job
 
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		is_robotic_species = no
 	}
 
@@ -1581,7 +1593,7 @@ overlord_bio_trophy_drone = {
 		}
 	}
 
-	triggered_pop_modifier = {
+	triggered_planet_pop_group_modifier_for_all = {
 		pop_housing_usage_add = -1
 		planet_pops_upkeep_mult = -2
 	}
@@ -1598,7 +1610,6 @@ overlord_manager = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = holding_franchise_headquarters
-	clothes_texture_index = 3
 	icon = manager
 
 	possible_pre_triggers = {
@@ -1646,7 +1657,6 @@ overlord_mortal_initiate = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_sacrificial_temple_2
-	clothes_texture_index = 1
 	icon = mortal_initiate
 
 	possible_pre_triggers = {
@@ -1659,7 +1669,10 @@ overlord_mortal_initiate = {
 
 	possible_precalc = can_fill_worker_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 		is_robotic_species = no
 		NOT = { has_trait = trait_zombie } #How do you kill that which has no life?
 	}
@@ -1692,7 +1705,6 @@ overlord_mortal_initiate_drone = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_sacrificial_temple_2
-	clothes_texture_index = 1
 	icon = mortal_initiate
 
 	possible_pre_triggers = {
@@ -1737,7 +1749,6 @@ overlord_bath_attendant = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_toxic_baths
-	clothes_texture_index = 1
 	icon = bath_attendant
 
 	possible_pre_triggers = {
@@ -1750,7 +1761,10 @@ overlord_bath_attendant = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 	}
 
 	resources = {
@@ -1768,7 +1782,7 @@ overlord_bath_attendant = {
 	}
 
 	triggered_planet_modifier = {
-		pop_growth_speed = 0.01
+		logistic_growth_mult = 0.01
 		pop_environment_tolerance = -0.005
 		pop_happiness = -0.005
 		mult = planet.value:toxic_attendant_growth
@@ -1785,7 +1799,6 @@ overlord_bath_attendant_hive = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_toxic_baths
-	clothes_texture_index = 1
 	icon = bath_attendant
 
 	possible_pre_triggers = {
@@ -1816,7 +1829,7 @@ overlord_bath_attendant_hive = {
 	}
 
 	triggered_planet_modifier = {
-		planet_pop_assembly_organic_mult = 0.015
+		logistic_growth_mult = 0.015
 		pop_environment_tolerance = -0.0075
 		mult = planet.value:toxic_attendant_growth
 	}
@@ -1832,7 +1845,6 @@ overlord_bath_attendant_machine = {
 	can_set_priority = no
 	is_capped_by_modifier = yes
 	building_icon = building_toxic_baths
-	clothes_texture_index = 1
 	icon = bath_attendant
 
 	possible_pre_triggers = {
@@ -1878,7 +1890,6 @@ overlord_knight = {
 	category = specialist
 	can_set_priority = no
 	building_icon = building_order_keep
-	clothes_texture_index = 3
 	icon = knight
 
 	possible_pre_triggers = {
@@ -1891,48 +1902,61 @@ overlord_knight = {
 
 	possible_precalc = can_fill_specialist_job
 	possible = {
-		ethic_is_not_enslaved = yes
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
 	}
 
 	overlord_resources = {
-		category = knights_independent_category
+		category = planet_knights
 		produces = {
+			trigger = { exists = owner }
 			unity = 3
 			mult = value:knights_unity_output_modifier
 		}
 		produces = {
-			physics_research = 2
-			engineering_research = 2
-			society_research = 2
+			trigger = { exists = owner }
+			physics_research = 1
+			engineering_research = 1
+			society_research = 1
 			mult = value:knights_research_output_modifier
 		}
 	}
 
 	resources = {
-		category = knights_independent_category
+		category = planet_knights
 		upkeep = {
 			alloys = 1
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_modifier = luminous_blades
+					}
+				}
+			}
 		}
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			always = yes
-		}
-		pop_defense_armies_add = 2
-		mult = value:scripted_modifier_mult|MODIFIER|knights_independent_category_produces_mult|
+	pop_group_modifier = {
+		planet_defense_armies_add = 2
+	}
+
+	planet_modifier = {
+		job_squire_add = 2
 	}
 
 	triggered_planet_modifier = {
-		planet_stability_add = 3
-		mult = value:scripted_modifier_mult|MODIFIER|knights_independent_category_produces_mult|
+		potential = {
+			owner = { has_country_flag = toxoids_7090_a }
+		}
+		planet_amenities_add = 5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			owner.overlord = { has_modifier = alloy_producing_knights }
-		}
-		country_alloys_produces_mult = 0.015
+	country_modifier = {
+		country_naval_cap_add = 4
 	}
 
 	weight = {
@@ -1949,7 +1973,7 @@ overlord_knight = {
 		}
 		modifier = {
 			factor = 5
-			has_job = overlord_knight
+			has_job_type = overlord_knight
 		}
 	}
 }
@@ -1959,7 +1983,6 @@ overlord_knight_drone = {
 	category = complex_drone
 	can_set_priority = no
 	building_icon = building_order_keep
-	clothes_texture_index = 3
 	icon = knight
 
 	possible_pre_triggers = {
@@ -1977,44 +2000,54 @@ overlord_knight_drone = {
 	}
 
 	overlord_resources = {
-		category = knights_independent_category
+		category = planet_knights
 		produces = {
+			trigger = { exists = owner }
 			unity = 3
 			mult = value:knights_unity_output_modifier
 		}
 		produces = {
-			physics_research = 2
-			engineering_research = 2
-			society_research = 2
+			trigger = { exists = owner }
+			physics_research = 1
+			engineering_research = 1
+			society_research = 1
 			mult = value:knights_research_output_modifier
 		}
 	}
 
 	resources = {
-		category = knights_independent_category
+		category = planet_knights
 		upkeep = {
 			alloys = 1
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_modifier = luminous_blades
+					}
+				}
+			}
 		}
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			always = yes
-		}
-		pop_defense_armies_add = 2
-		mult = value:scripted_modifier_mult|MODIFIER|knights_independent_category_produces_mult|
+	pop_group_modifier = {
+		planet_defense_armies_add = 2
+	}
+
+	planet_modifier = {
+		job_squire_add = 2
 	}
 
 	triggered_planet_modifier = {
-		planet_stability_add = 3
-		mult = value:scripted_modifier_mult|MODIFIER|knights_independent_category_produces_mult|
+		potential = {
+			owner = { has_country_flag = toxoids_7090_a }
+		}
+		planet_amenities_add = 5
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			owner.overlord = { has_modifier = alloy_producing_knights }
-		}
-		country_alloys_produces_mult = 0.015
+	country_modifier = {
+		country_naval_cap_add = 4
 	}
 
 	weight = {
@@ -2031,7 +2064,7 @@ overlord_knight_drone = {
 		}
 		modifier = {
 			factor = 5
-			has_job = overlord_knight_drone
+			has_job_type = overlord_knight_drone
 		}
 	}
 }

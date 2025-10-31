@@ -19,7 +19,10 @@ opinion_of_free = {
 		}
 		modifier = {
 			add = -25
-			has_valid_civic = civic_shared_burden
+			OR = {
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
+			}
 			FROM = {
 				has_valid_civic = civic_human_rights_first
 			}
@@ -42,7 +45,10 @@ opinion_centralized = {
 		modifier = {
 			add = -50
 			FROM = {
-				has_valid_civic = civic_shared_burden
+				OR = {
+					has_valid_civic = civic_shared_burden
+					has_valid_civic = civic_advanced_socialism
+				}
 			}
 		}
 	}
@@ -62,16 +68,16 @@ opinion_of_free_pos = {
 		}
 		modifier = {
 			add = 25
-			has_valid_civic = civic_beacon_of_liberty
+			has_valid_civic = civic_free_haven
 			FROM = {
-				has_valid_civic = civic_human_rights_first
+				has_valid_civic = civic_beacon_of_liberty
 			}
 		}
 		modifier = {
 			add = 50
-			has_valid_civic = civic_human_rights_first
+			has_valid_civic = civic_beacon_of_liberty
 			FROM = {
-				has_valid_civic = civic_human_rights_first
+				has_valid_civic = civic_beacon_of_liberty
 			}
 		}
 	}
@@ -91,7 +97,10 @@ opinion_of_free = {
 		}
 		modifier = {
 			add = -50
-			has_valid_civic = civic_shared_burden
+			OR = {
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
+			}
 			FROM = {
 				has_valid_civic = civic_human_rights_first
 			}
@@ -108,26 +117,28 @@ opinion_of_communist_pos = {
 			add = 50
 			has_ethic = ethic_fanatic_egalitarian
 			NOR = {
-				has_ethic = ethic_capitalism
-				has_ethic = ethic_fanatic_capitalism
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
 			}
 			FROM = {
 				OR = {
-					has_valid_civic = civic_transcendental_communism
+					has_valid_civic = civic_transcendental_utopia
 					has_valid_civic = civic_shared_burden
+					has_valid_civic = civic_advanced_socialism
 				}
 			}
 		}
 		modifier = {
 			add = 50
 			OR = {
-				has_ethic = ethic_socialism
-				has_ethic = ethic_fanatic_socialism
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
 			}
 			FROM = {
 				OR = {
-					has_valid_civic = civic_transcendental_communism
+					has_valid_civic = civic_transcendental_utopia
 					has_valid_civic = civic_shared_burden
+					has_valid_civic = civic_advanced_socialism
 				}
 			}
 		}
@@ -149,11 +160,11 @@ opinion_our_comrades_pos = {
 		modifier = {
 			add = 50
 			OR = {
-				has_valid_civic = civic_transcendental_communism
 				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
 			}
 			FROM = {
-				has_ethic = ethic_fanatic_socialism
+				has_ethic = ethic_fanatic_egalitarian
 			}
 		}
 	}
@@ -166,14 +177,14 @@ opinion_pink_government = {
 	opinion = {
 		modifier = {
 			add = 50
-			has_ethic = ethic_fanatic_capitalism
+			has_ethic = ethic_fanatic_authoritarian
 			FROM = {
 				has_policy_flag = reform_and_opening_up
 			}
 		}
 		modifier = {
 			add = 75
-			has_ethic = ethic_capitalism
+			has_ethic = ethic_authoritarian
 			FROM = {
 				has_policy_flag = reform_and_opening_up
 			}
@@ -188,7 +199,7 @@ opinion_capitalist_roader = {
 	opinion = {
 		modifier = {
 			add = -25
-			has_ethic = ethic_socialism
+			has_ethic = ethic_egalitarian
 			NOT = {
 				has_policy_flag = reform_and_opening_up
 			}
@@ -198,7 +209,7 @@ opinion_capitalist_roader = {
 		}
 		modifier = {
 			add = -50
-			has_ethic = ethic_fanatic_socialism
+			has_ethic = ethic_fanatic_egalitarian
 			NOT = {
 				has_policy_flag = reform_and_opening_up
 			}
@@ -209,8 +220,8 @@ opinion_capitalist_roader = {
 		modifier = {
 			add = -25
 			OR = {
-				has_valid_civic = civic_transcendental_communism
 				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_advanced_socialism
 			}
 			NOT = {
 				has_policy_flag = reform_and_opening_up
@@ -230,8 +241,8 @@ opinion_nazbol = {
 		modifier = {
 			add = -50
 			OR = {
-				has_ethic = ethic_socialism
-				has_ethic = ethic_fanatic_socialism
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
 			}
 			NOT = {
 				has_valid_civic = civic_nazbol
@@ -251,7 +262,7 @@ opinion_wtf_revisionism = {
 		modifier = {
 			add = -25
 			OR = {
-				has_ethic = ethic_socialism
+				has_ethic = ethic_egalitarian
 			}
 			NOT = {
 				has_valid_civic = civic_characteristic_socialism_pioneer
@@ -269,7 +280,7 @@ opinion_wtf_revisionism = {
 		modifier = {
 			add = -50
 			OR = {
-				has_ethic = ethic_fanatic_socialism
+				has_ethic = ethic_fanatic_egalitarian
 			}
 			NOT = {
 				has_valid_civic = civic_characteristic_socialism_pioneer
@@ -295,7 +306,7 @@ opinion_friendly_socialism = {
 		modifier = {
 			add = 50
 			OR = {
-				has_ethic = ethic_capitalism
+				has_ethic = ethic_authoritarian
 				has_ethic = ethic_authoritarian
 			}
 			NOT = {
@@ -316,7 +327,7 @@ opinion_friendly_socialism = {
 		modifier = {
 			add = 75
 			OR = {
-				has_ethic = ethic_fanatic_capitalism
+				has_ethic = ethic_fanatic_authoritarian
 				has_ethic = ethic_fanatic_authoritarian
 			}
 			NOT = {

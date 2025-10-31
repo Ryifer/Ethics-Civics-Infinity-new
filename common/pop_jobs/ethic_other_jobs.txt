@@ -1,20 +1,33 @@
 #剩余价值
 surplus_value = {
-	category = worker
+	category = slave
 	is_capped_by_modifier = no
-	clothes_texture_index = 2
+
+	swappable_data = {
+		default = {
+			building_icon = building_crude_huts
+			icon = primitive_laborer
+		}
+	}
 
 	possible_pre_triggers = {
+		has_owner = yes
 		is_enslaved = yes
+		is_being_purged = no
+		is_being_assimilated = no
 	}
 	possible = {
 		exists = owner
 		owner = {
-			has_civic = civic_machine_financial_investment
+			OR = {
+				has_civic = civic_machine_financial_investment
+				has_civic = civic_hive_capital_creates_gods
+			}
 		}
-		has_citizenship_type = {
-			country = owner
-			type = citizenship_slavery
+		NOR = {
+			has_trait = "trait_mechanical"
+			has_trait = "trait_machine_unit"
+			has_trait = "trait_hive_mind"
 		}
 	}
 
@@ -24,18 +37,16 @@ surplus_value = {
 			alloys = 1
 			consumer_goods = 1
 			food = 1
-		}
-		upkeep = {
-			minerals = 3
-		}
-		produces = {
+			minerals = 1
 		}
 	}
-	pop_modifier = {
+	pop_group_modifier = {
 		pop_housing_usage_add = -0.25
+		pop_happiness = -0.2
 	}
 	planet_modifier = {
-		pop_growth_speed_reduction = 0.01
+		planet_jobs_trade_produces_mult = 0.01
+		pop_decline_speed = 0.01
 	}
 
 	weight = {
@@ -45,22 +56,33 @@ surplus_value = {
 
 #有机观察员
 organic_observer = {
-	category = bio_trophy
+	category = civilian
 	is_capped_by_modifier = no
-	clothes_texture_index = 2
-	building_icon = building_fe_dome
-	icon = researcher
-	possible_pre_triggers = {
+
+	swappable_data = {
+		default = {
+			building_icon = building_fe_dome
+			icon = bio_trophy
+		}
 	}
-	pop_modifier = {
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+	}
+	pop_group_modifier = {
 		pop_happiness = 0.1
 	}
 	possible = {
 		exists = owner
-		NOT = { has_trait = "trait_mechanical" }
-		has_citizenship_type = {
-			country = owner
-			type = citizenship_limited
+		NOR = {
+			has_trait = "trait_mechanical"
+			has_trait = "trait_machine_unit"
+		}
+		NOT = {
+			has_citizenship_type = {
+				country = owner
+				type = citizenship_purge
+			}
 		}
 		owner = {
 			has_civic = civic_machine_liberator
@@ -69,31 +91,56 @@ organic_observer = {
 	resources = {
 		category = planet_researchers
 		produces = {
-			food = 2
-			consumer_goods = 1
+			trigger = { is_lithoid = no }
+			food = 3
+		}
+		produces = {
+			trigger = { is_lithoid = yes }
+			minerals = 3
+		}
+		produces = {
+			consumer_goods = 2
 			society_research = 1
-			unity = 4
+			unity = 3
 		}
 		upkeep = {
 			minerals = 1.5
 		}
 		produces = {
 			trigger = {
-				owner = {
-					has_valid_civic = civic_mechanical_utopia
-				}
+				owner = { has_valid_civic = civic_mechanical_utopia }
+				is_lithoid = no
+			}
+			food = 2
+		}
+		produces = {
+			trigger = {
+				owner = { has_valid_civic = civic_mechanical_utopia }
+				is_lithoid = yes
+			}
+			minerals = 2
+		}
+		produces = {
+			trigger = {
+				owner = { has_valid_civic = civic_mechanical_utopia }
 			}
 			energy = 2
 			minerals = 1
-			food = 2
 			consumer_goods = 0.5
 			alloys = 0.25
 		}
 	}
 	triggered_planet_modifier = {
 		potential = { always = yes }
-		planet_amenities_add = 1
+		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		country_admin_cap_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|planet_researchers_admin_cap_produces_add|
 	}
 	weight = {
 		weight = 1
@@ -103,9 +150,14 @@ organic_observer = {
 #能治工人
 intelligent_labor = {
 	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_machine_capital
-	icon = evaluator
+
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			building_icon = building_machine_capital
+			icon = evaluator
+		}
+	}
 	possible_pre_triggers = {
 		has_owner = yes
 		is_enslaved = no
@@ -177,15 +229,22 @@ intelligent_labor = {
 #机魂
 machine_soul = {
 	category = machine_soul
-	clothes_texture_index = 1
-	building_icon = building_organic_sanctuary
-	icon = bio_trophy
+
+	swappable_data = {
+		default = {
+			building_icon = building_organic_sanctuary
+			icon = bio_trophy
+		}
+	}
 	possible = {
 		exists = owner
 		owner = {
-			has_civic = civic_machine_soul_servant
+			has_origin = origin_machine_cult
 		}
-		has_trait = "trait_mechanical"
+		OR = {
+			has_trait = "trait_mechanical"
+			has_trait = "trait_machine_unit"
+		}
 	}
 	resources = {
 		category = planet_bio_trophies
@@ -195,14 +254,11 @@ machine_soul = {
 	}
 	planet_modifier = {
 		planet_amenities_no_happiness_add = 2
-		planet_jobs_produces_mult = 0.01
+		pop_bonus_workforce_mult = 0.01
 	}
 	country_modifier = {
-		country_admin_cap_add = 2
+		country_admin_cap_add = 5
 	    pop_amenities_usage_mult = -0.015
-	}
-	triggered_pop_modifier = {
-		pop_housing_usage_add = -1
 	}
 	weight = {
 		weight = 999999
@@ -212,8 +268,13 @@ machine_soul = {
 #AI复杂子个体
 future_complex_drone = {
 	category = complex_drone
-	clothes_texture_index = 2
-	icon = administrator
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			icon = researcher
+			building_icon = building_school_1
+		}
+	}
 	possible_precalc = can_fill_drone_job
 	possible = {
 		exists = owner
@@ -353,7 +414,9 @@ future_complex_drone = {
 				years_passed >= 50
 				owner = {
 					is_ai = yes
-					num_pops < 100
+					count_owned_pop_amount = {
+						count < 10000
+					}
 				}
 			}
 			physics_research = 8
@@ -366,7 +429,9 @@ future_complex_drone = {
 				years_passed >= 80
 				owner = {
 					is_ai = yes
-					num_pops < 100
+					count_owned_pop_amount = {
+						count < 10000
+					}
 				}
 			}
 			physics_research = 8
@@ -417,6 +482,26 @@ future_complex_drone = {
 		country_naval_cap_add = 5
 	}
 
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_technocracy
+			}
+		}
+		country_admin_cap_add = 0.2
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = planet
+			planet = {
+				has_designation = col_capital_research
+			}
+		}
+		country_admin_cap_add = 5
+	}
+
 	planet_modifier = {
 		job_environmental_pollution_caused_mult = -0.1
 		planet_stability_add = 2.5
@@ -424,7 +509,7 @@ future_complex_drone = {
 
 	triggered_planet_modifier = {
 		potential = { owner = { is_machine_empire = yes } }
-		pop_growth_speed_reduction = -0.05
+		pop_decline_speed = -0.05
 	}
 
 	triggered_planet_modifier = {
@@ -456,8 +541,13 @@ future_complex_drone = {
 #AI简单子个体
 future_simple_drone = {
 	category = simple_drone
-	clothes_texture_index = 2
-	icon = primitive_laborer
+	swappable_data = {
+		default = {
+			condition_string = DRONE_JOB_TRIGGER
+			icon = primitive_laborer
+			building_icon = building_school_1
+		}
+	}
 	possible_precalc = can_fill_drone_job
 	possible = {
 		exists = owner
@@ -658,7 +748,9 @@ future_simple_drone = {
 				years_passed >= 50
 				owner = {
 					is_ai = yes
-					num_pops < 100
+					count_owned_pop_amount = {
+						count < 10000
+					}
 				}
 			}
 			alloys = 14
@@ -669,7 +761,9 @@ future_simple_drone = {
 				years_passed >= 80
 				owner = {
 					is_ai = yes
-					num_pops < 100
+					count_owned_pop_amount = {
+						count < 10000
+					}
 				}
 			}
 			alloys = 14
@@ -703,7 +797,7 @@ future_simple_drone = {
 			trigger = {
 				exists = owner
 				owner = {
-					has_ethic = ethic_fanatic_socialism
+					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
 			unity = 0.5
@@ -712,7 +806,7 @@ future_simple_drone = {
 			trigger = {
 				exists = owner
 				owner = {
-					has_ethic = ethic_socialism
+					has_ethic = ethic_egalitarian
 				}
 			}
 			unity = 0.25
@@ -747,7 +841,7 @@ future_simple_drone = {
 	}
 
 	planet_modifier = {
-		planet_jobs_produces_mult = 0.01
+		pop_bonus_workforce_mult = 0.01
 	}
 	#污染
 	triggered_planet_modifier = {
@@ -755,13 +849,14 @@ future_simple_drone = {
 			owner = {
 				OR = {
 					NOT = {
-						is_country_type = default_ev
+						is_no_planet_country = yes
 					}
 					has_origin = origin_ev_both_choosen
 					has_valid_civic = civic_ev_planet_and_fleet
 					has_ascension_perk = ev_land_planets
 				}
 			}
+			planet = { is_artificial = no }
 		}
 		pop_environment_tolerance = -0.01
 		mult = value:scripted_modifier_mult|MODIFIER|job_environmental_pollution_caused_mult|
@@ -785,22 +880,22 @@ breeding_drone = {
 	possible_precalc = can_fill_drone_job
 	possible_pre_triggers = {
 		has_owner = yes
-		is_robot_pop = yes
+		is_robot_pop_group = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
-	
+
 	possible = {
-		hidden_trigger = {
-			exists = owner
-		}
-		owner = {
-			has_valid_civic = civic_machine_syntheticLove
+		hidden_trigger = { exists = owner }
+		owner = { has_valid_civic = civic_machine_syntheticLove }
+		OR = {
+			planet = { has_modifier = planet_breeding_drones }
+			owner = { is_ai = yes }
 		}
 	}
-	
+
 	triggered_planet_modifier = {
-		pop_growth_speed = 0.02
+		logistic_growth_mult = 0.05
 		biological_pop_happiness = 0.01
 		planet_amenities_no_happiness_add = 2
 	}
@@ -817,6 +912,274 @@ breeding_drone = {
 
 	weight = {
 		weight = -1.0
+	}
+}
+
+#教师
+teacher = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_autochthon_monument
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+
+	weight = {
+		weight = 0
+	}
+}
+
+#王室成员
+royalty = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_palace
+	can_set_priority = no
+
+	possible_pre_triggers = {
+		has_owner = yes
+		# is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_ruler_job
+	possible = {
+		OR = {
+			is_enslaved = no
+			owner = { has_valid_civic = civic_du_contrat_social }
+		}
+	}
+
+	resources = {
+		category = planet_nobles
+		produces = {
+			unity = 4
+		}
+		upkeep = {
+			consumer_goods = @ruler_upkeep_consumer_goods_base
+		}
+	}
+
+	planet_modifier = {
+		job_slave_overseer_add = 100
+	}
+
+	triggered_planet_pop_group_modifier_for_all = {
+		potential = { always = yes }
+		pop_cat_ruler_political_power = 5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_valid_civic = civic_anarchism
+			}
+		}
+		pop_cat_specialist_happiness = -0.05
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_aristocratic_elite
+			}
+		}
+		planet_stability_add = 5
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_feudal_realm
+			}
+		}
+		country_admin_cap_add = 10
+	}
+
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			factor = 10
+			exists = owner
+			owner = {
+				is_authoritarian = yes
+			}
+		}
+		modifier = {
+			mult = value:job_weights_modifier|JOB|noble|RESOURCE|unity|
+			exists = owner
+			owner = { has_edict = dynamic_weight }
+		}
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 0.1
+			is_egalitarian = yes
+			NOT = { has_job_type = royalty }
+		}
+		modifier = {
+			factor = 5
+			has_job_type = royalty
+		}
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			is_crisis_purged_ruler_check = yes
+		}
+	}
+}
+
+#食利者
+rentier = {
+	category = rentier
+	count_as_available_for_ai = yes
+	can_set_priority = no
+
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	swappable_data = {
+		default = {
+			icon = civilian
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_palace
+		}
+	}
+
+	resources = {
+		category = planet_civilians
+		produces = {
+			trade = 1.5
+		}
+		upkeep = {
+			consumer_goods = 1.5
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = 1.5
+	}
+
+	weight = {
+		weight = @ruler_job_weight
+	}
+}
+
+#脱产者
+postpartum_workers = {
+	category = postpartum_workers
+	count_as_available_for_ai = yes
+	can_set_priority = no
+
+	swappable_data = {
+		default = {
+			icon = civilian
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_paradise_dome
+		}
+	}
+
+	possible_pre_triggers = {
+		has_owner = yes
+		# is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+		is_sparta_slave = no
+	}
+
+	resources = {
+		category = planet_civilians
+		produces = {
+			trade = 1
+		}
+		upkeep = {
+			consumer_goods = 1
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = 1
+	}
+
+	weight = {
+		weight = 50
+	}
+}
+
+#罢工者
+striker = {
+	category = striker
+	is_capped_by_modifier = yes
+	can_set_priority = no
+
+	swappable_data = {
+		default = {
+			building_icon = building_primitive_dwellings
+			icon = postpartum_workers
+		}
+	}
+	contributes_to_diplo_weight = no
+	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		# check that this is not a robot in servitude
+		OR = {
+			is_enslaved = yes
+			has_living_standard = { country = owner type = living_standard_dystopian_society }
+			has_living_standard = { country = owner type = living_standard_stratified }
+			has_living_standard = { country = owner type = living_standard_subsistence }
+		}
+		NOR = {
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
+	}
+
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			consumer_goods = 1
+		}
+	}
+
+	planet_modifier = {
+		planet_pops_trade_produces_mult = -0.01
+		pop_ethic_egalitarian_attraction_mult = 0.05
+		planet_stability_add = -1
+	}
+
+	weight = {
+		weight = 10
 	}
 }
 
